@@ -15,7 +15,8 @@ namespace Infinity_TD
         public Texture2D background, ouroboros, arrow;
 
         public string[] menuStrings = new string[4];
-        
+
+        float snakeRotation;
         
 
         enum Options { START, CONTINUE, INSTRUCTIONS, EXIT }
@@ -47,6 +48,7 @@ namespace Infinity_TD
                 spriteBatch.DrawString(spriteFont, menuStrings[i], Vector2.Zero, Color.White);
             }
 
+            spriteBatch.Draw(ouroboros, Vector2.Zero, null, Color.White, snakeRotation, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
 
 

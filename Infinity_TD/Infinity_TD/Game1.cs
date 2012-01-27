@@ -16,8 +16,10 @@ namespace Infinity_TD
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Menu menu;
-
+        Interface interf = new Interface();
         KeyboardState previousState;
+
+        List<Enemy> enemyList = new List<Enemy>();
 
         MouseState previousMouseState;
 
@@ -35,17 +37,19 @@ namespace Infinity_TD
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
             Window.Title = "Infinity TD";
-            IsMouseVisible = true;
+            IsMouseVisible = false;
         }
 
         protected override void Initialize()
         {
+            interf.InitializeInterface(this.Content);
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            mouseCursor = Content.Load<Texture2D>("Graphics/cursor1");
         }
 
         protected override void UnloadContent()
@@ -61,6 +65,7 @@ namespace Infinity_TD
             switch (currentScreen)
             {
                 case Screens.GAME:
+                    interf.UpdateInterface(gameTime);
                     break;
                 case Screens.MENU:
                     menu.updateMenu();
@@ -78,9 +83,12 @@ namespace Infinity_TD
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            spriteBatch.Begin();
+
             switch (currentScreen)
             {
                 case Screens.GAME:
+                    //interf.DrawInterface(spriteBatch);
                     break;
                 case Screens.MENU:
                     //Menu.drawMenu(spriteBatch, --SPRITEFONT HERE)
@@ -89,9 +97,9 @@ namespace Infinity_TD
                     break;
             }
 
-
-
             spriteBatch.Draw(mouseCursor, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
