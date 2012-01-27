@@ -15,6 +15,7 @@ namespace Infinity_TD
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Menu menu;
 
         public enum Screens { MENU, GAME, PAUSE }
 
@@ -22,6 +23,7 @@ namespace Infinity_TD
 
         public Game1()
         {
+            menu = new Menu();
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1024;
@@ -55,7 +57,7 @@ namespace Infinity_TD
                 case Screens.GAME:
                     break;
                 case Screens.MENU:
-                    Menu.updateMenu();
+                    menu.updateMenu();
                     break;
                 case Screens.PAUSE:
                     break;
