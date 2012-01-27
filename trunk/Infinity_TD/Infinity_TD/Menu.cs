@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+
+
+namespace Infinity_TD
+{
+    class Menu
+    {
+
+        public Texture2D background, ouroboros, arrow;
+
+        public string[] menuStrings = new string[4];
+        
+        
+
+        enum Options { START, CONTINUE, INSTRUCTIONS, EXIT }
+
+        Options selectedOption = Options.START;
+
+        public void initializeMenu(ContentManager content)
+        {
+            menuStrings[1] = "START GAME";
+
+            //TODO: ADD TEXTURAS
+            background = content.Load<Texture2D>("");
+            ouroboros = content.Load<Texture2D>("");
+        }
+
+        public void updateMenu()
+        {
+
+
+        }
+
+        public void drawMenu(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        {
+            spriteBatch.Draw(background, Vector2.Zero, Color.White);
+        }
+
+
+    }
+}
