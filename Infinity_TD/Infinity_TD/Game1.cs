@@ -17,6 +17,12 @@ namespace Infinity_TD
         SpriteBatch spriteBatch;
         Menu menu;
 
+        KeyboardState previousState;
+
+        MouseState previousMouseState;
+
+        Texture2D mouseCursor;
+
         public enum Screens { MENU, GAME, PAUSE }
 
         public Screens currentScreen = Screens.GAME;
@@ -28,6 +34,7 @@ namespace Infinity_TD
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
+            Window.Title = "Infinity TD";
             IsMouseVisible = true;
         }
 
@@ -48,8 +55,7 @@ namespace Infinity_TD
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape)) this.Exit();
 
 
             switch (currentScreen)
@@ -63,6 +69,8 @@ namespace Infinity_TD
                     break;
             }
 
+            previousMouseState = Mouse.GetState();
+            previousState = Keyboard.GetState();
             base.Update(gameTime);
         }
 
@@ -82,6 +90,8 @@ namespace Infinity_TD
             }
 
 
+
+            spriteBatch.Draw(mouseCursor, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Color.White);
 
             base.Draw(gameTime);
         }

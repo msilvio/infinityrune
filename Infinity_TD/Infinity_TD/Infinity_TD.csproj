@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{A0427A0E-2F01-4B62-8C65-FA1A0A1B40AB}</ProjectGuid>
+    <ProjectGuid>{65DEA2E4-669F-49B0-8693-B3602B345F02}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -14,7 +14,7 @@
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
-    <XnaCrossPlatformGroupID>1f709ae6-e383-4398-a403-59432634f3a5</XnaCrossPlatformGroupID>
+    <XnaCrossPlatformGroupID>f3c1860e-4e64-491c-b2b1-a946a907a0f2</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
@@ -108,14 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Combinator.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Interface.cs" />
     <Compile Include="JS-Game1.cs" />
     <Compile Include="MapCell.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="TileMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

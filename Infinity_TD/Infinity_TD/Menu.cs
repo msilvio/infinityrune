@@ -27,6 +27,7 @@ namespace Infinity_TD
             menuStrings[1] = "START GAME";
 
             //TODO: ADD TEXTURAS
+
             background = content.Load<Texture2D>("");
             ouroboros = content.Load<Texture2D>("");
         }
@@ -40,6 +41,12 @@ namespace Infinity_TD
         public void drawMenu(SpriteBatch spriteBatch, SpriteFont spriteFont)
         {
             spriteBatch.Draw(background, Vector2.Zero, Color.White);
+
+            for (int i=1; i <= 4; i++)
+            {
+                spriteBatch.DrawString(spriteFont, menuStrings[i], Vector2.Zero, Color.White);
+            }
+
         }
 
 
