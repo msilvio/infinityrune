@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Microsoft.Xna.Framework.Content;
 
 namespace Infinity_TD
 {
@@ -14,7 +14,16 @@ namespace Infinity_TD
         Texture2D[] runes = new Texture2D[9];
         float positionX = 768;
 
-        public void UpdateInterface()
+        public void InitializeInterface(ContentManager content)
+        {
+            //sidebar = content.Load<Texture2D>("");
+            //scroll = content.Load<Texture2D>("");
+            //crafting = content.Load<Texture2D>("");
+            //runebag = content.Load<Texture2D>("");
+
+        }
+
+        public void UpdateInterface(GameTime gameTime)
         {
 
         }
