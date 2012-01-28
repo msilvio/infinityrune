@@ -31,6 +31,7 @@ namespace Infinity_TD
         //public Screens currentScreen = Screens.GAME;
 
         Texture2D mouseCursor;
+        Texture2D altMouse;
         
         //Estrutura de Menu
         private InputHandler input;
@@ -80,6 +81,7 @@ namespace Infinity_TD
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             mouseCursor = Content.Load<Texture2D>("Graphics/Stuff/cursor1");
+            altMouse = Content.Load<Texture2D>("Graphics/Stuff/cursor2");
         }
 
         protected override void UnloadContent()
@@ -132,7 +134,8 @@ namespace Infinity_TD
             SpriteBatch.Begin();
             base.Draw(gameTime);
 
-            SpriteBatch.Draw(mouseCursor, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Color.White);
+            if (Mouse.GetState().LeftButton == ButtonState.Released) SpriteBatch.Draw(mouseCursor, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Color.White);
+            if(Mouse.GetState().LeftButton == ButtonState.Pressed) SpriteBatch.Draw(altMouse, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Color.White);
 
             SpriteBatch.End();
         }

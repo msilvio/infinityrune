@@ -19,7 +19,7 @@ namespace Infinity_TD
         public List<Nexus> NexusList = new List<Nexus>();
         public int MapWidth = 24;
         public int MapHeight = 24;
-        public int[,] Map = new int[24, 24];
+        public int[,] Map = new int[20, 19];
         public Random RNG = new Random();
 
         public TileMap()
@@ -34,21 +34,7 @@ namespace Infinity_TD
                 Rows.Add(thisRow);
             }
 
-            //Map = new int[24,24]
-            //{
-            //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-            //{ 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 },
-            //{ 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 },
-            //{ 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 },
-            //{ 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 },
-            //{ 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 },
-            //{ 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }        
-            //};
+            Map = MapArrays.Maplist.ElementAt(1);
 
             for (int row = 0; row < Map.GetLength(0); row++)
             {
@@ -62,13 +48,13 @@ namespace Infinity_TD
 
         //INDEX DOS TILES:
         // TILE VAZIO (PARA AS TORRES) -- 1
-        // ESTRADA -- 2
-        // TILE BLOQUEADO -- SEM TORRES -- 3
-        // WAYPOINT 1 -- 4
-        // WAYPOINT 2 -- 5
-        // WAYPOINT 3 -- 6
-        // ENTRADA -- 7
-        // NEXUS -- 8
+        // 
+        // TILE BLOQUEADO -- SEM TORRES -- 2
+        // WAYPOINT 1 -- 3
+        // WAYPOINT 2 -- 4
+        // WAYPOINT 3 -- 5
+        // ENTRADA -- 6
+        // NEXUS -- 7
    
 
         public void initializeMap()
@@ -81,36 +67,36 @@ namespace Infinity_TD
                     if (Rows[row].Columns[column].TileID == 1)
                     {
                         EmptyTileList.Add(new Tiles.EmptyTile());
-                        EmptyTileList.Last().position.X = column * 32;
-                        EmptyTileList.Last().position.Y = row * 32;
-                        EmptyTileList.Last().area = new Rectangle((int)EmptyTileList.Last().position.X, (int)EmptyTileList.Last().position.Y, 32, 32);
+                        EmptyTileList.Last().position.X = column * 40;
+                        EmptyTileList.Last().position.Y = row * 40;
+                        EmptyTileList.Last().area = new Rectangle((int)EmptyTileList.Last().position.X, (int)EmptyTileList.Last().position.Y, 40, 40);
                         Rows[row].Columns[column].TileID = 0;
                     }
 
                     if (Rows[row].Columns[column].TileID == 2)
                     {
                         RoadTileList.Add(new Tiles.RoadTile());
-                        RoadTileList.Last().position.X = column * 32;
-                        RoadTileList.Last().position.Y = row * 32;
-                        RoadTileList.Last().area = new Rectangle((int)RoadTileList.Last().position.X, (int)RoadTileList.Last().position.Y, 32, 32);
+                        RoadTileList.Last().position.X = column * 40;
+                        RoadTileList.Last().position.Y = row * 40;
+                        RoadTileList.Last().area = new Rectangle((int)RoadTileList.Last().position.X, (int)RoadTileList.Last().position.Y, 40, 40);
                         Rows[row].Columns[column].TileID = 0;
                     }
 
                     if (Rows[row].Columns[column].TileID == 3)
                     {
                         BlockedTileList.Add(new Tiles.BlockedTile());
-                        BlockedTileList.Last().position.X = column * 32;
-                        BlockedTileList.Last().position.Y = row * 32;
-                        BlockedTileList.Last().area = new Rectangle((int)BlockedTileList.Last().position.X, (int)BlockedTileList.Last().position.Y, 32, 32);
+                        BlockedTileList.Last().position.X = column * 40;
+                        BlockedTileList.Last().position.Y = row * 40;
+                        BlockedTileList.Last().area = new Rectangle((int)BlockedTileList.Last().position.X, (int)BlockedTileList.Last().position.Y, 40, 40);
                         Rows[row].Columns[column].TileID = 0;
                     }
 
                     if (Rows[row].Columns[column].TileID == 4)
                     {
                         WaypointList.Add(new Tiles.Waypoint());
-                        WaypointList.Last().position.X = column * 32;
-                        WaypointList.Last().position.Y = row * 32;
-                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 32, 32);
+                        WaypointList.Last().position.X = column * 40;
+                        WaypointList.Last().position.Y = row * 40;
+                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 40, 40);
                         WaypointList.Last().index = 1;
                         Rows[row].Columns[column].TileID = 0;
                     }
@@ -118,9 +104,9 @@ namespace Infinity_TD
                     if (Rows[row].Columns[column].TileID == 5)
                     {
                         WaypointList.Add(new Tiles.Waypoint());
-                        WaypointList.Last().position.X = column * 32;
-                        WaypointList.Last().position.Y = row * 32;
-                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 32, 32);
+                        WaypointList.Last().position.X = column * 40;
+                        WaypointList.Last().position.Y = row * 40;
+                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 40, 40);
                         WaypointList.Last().index = 2;
                         Rows[row].Columns[column].TileID = 0;
                     }
@@ -128,9 +114,9 @@ namespace Infinity_TD
                     if (Rows[row].Columns[column].TileID == 6)
                     {
                         WaypointList.Add(new Tiles.Waypoint());
-                        WaypointList.Last().position.X = column * 32;
-                        WaypointList.Last().position.Y = row * 32;
-                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 32, 32);
+                        WaypointList.Last().position.X = column * 40;
+                        WaypointList.Last().position.Y = row * 40;
+                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 40, 40);
                         WaypointList.Last().index = 3;
                         Rows[row].Columns[column].TileID = 0;
                     }
@@ -138,18 +124,18 @@ namespace Infinity_TD
                     if (Rows[row].Columns[column].TileID == 7)
                     {
                         SpawnPointList.Add(new Tiles.SpawnPoint());
-                        SpawnPointList.Last().position.X = column * 32;
-                        SpawnPointList.Last().position.Y = row * 32;
-                        SpawnPointList.Last().area = new Rectangle((int)SpawnPointList.Last().position.X, (int)SpawnPointList.Last().position.Y, 32, 32);
+                        SpawnPointList.Last().position.X = column * 40;
+                        SpawnPointList.Last().position.Y = row * 40;
+                        SpawnPointList.Last().area = new Rectangle((int)SpawnPointList.Last().position.X, (int)SpawnPointList.Last().position.Y, 40, 40);
                         Rows[row].Columns[column].TileID = 0;
                     }
 
                     if (Rows[row].Columns[column].TileID == 8)
                     {
                         NexusList.Add(new Nexus());
-                        NexusList.Last().position.X = column * 32;
-                        NexusList.Last().position.Y = row * 32;
-                        NexusList.Last().area = new Rectangle((int)NexusList.Last().position.X, (int)NexusList.Last().position.Y, 32, 32);
+                        NexusList.Last().position.X = column * 40;
+                        NexusList.Last().position.Y = row * 40;
+                        NexusList.Last().area = new Rectangle((int)NexusList.Last().position.X, (int)NexusList.Last().position.Y, 40, 40);
                         Rows[row].Columns[column].TileID = 0;
                     }
 
@@ -161,8 +147,8 @@ namespace Infinity_TD
         public int getTileId(Point posicao)
         {
             int x, y;
-            x = (int)posicao.X / 32;
-            y = (int)posicao.Y / 32;
+            x = (int)posicao.X / 40;
+            y = (int)posicao.Y / 40;
             return this.Map[y, x];
         }
     }

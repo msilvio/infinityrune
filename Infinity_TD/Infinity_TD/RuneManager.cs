@@ -31,7 +31,7 @@ namespace Infinity_TD
             RecipeBag[3] = " Water + Air + Thunder =  Thunderstorm Rune";
             RecipeBag[4] = "Earth + Earth + Fire = Earthquake Rune";
             RecipeBag[5] = "Nature + Nature + Earth = Corrisive Rune";
-            RecipeBag[6] = "Fire + Earth + Fire = Magnatic Rune";
+            RecipeBag[6] = "Fire + Earth + Fire = Magmatic Rune";
             RecipeBag[7] = "Light + Light + Thunder = Glyph of Blinding Light";
             RecipeBag[8] = "Darkness + Fire + Darkness = Glyph of Dark Flames";
             RecipeBag[9] = "Cosmic + Light + Fire = Major Glyph of the Sun";

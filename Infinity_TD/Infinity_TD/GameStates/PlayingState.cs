@@ -14,8 +14,12 @@ namespace Infinity_TD
         SpriteFont font;
         Random rand;
         Color color;
-        Animacao _textureAnim1, _textureAnim2, _textureAnim3;
-        Texture2D texture1, texture2, texture3, texture4, texture5;
+        //Animacao _textureAnim1, _textureAnim2, _textureAnim3;
+        //Texture2D texture1, texture2, texture3, texture4, texture5;
+
+        TileMap tileMap = new TileMap();
+
+        Texture2D stageTexture;
 
         public PlayingState(Game game)
             : base(game)
@@ -26,12 +30,13 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
-            texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
-            texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
-            texture3 = Content.Load<Texture2D>(@"Graphics\Tower\torre-raio"); // retirar apos testes.
-            _textureAnim1 = new Animacao(texture1, new Vector2(150, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
-            _textureAnim2 = new Animacao(texture2, new Vector2(250, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
-            _textureAnim3 = new Animacao(texture3, new Vector2(350, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
+            stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\cidade");
+            //texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
+            //texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
+            //texture3 = Content.Load<Texture2D>(@"Graphics\Tower\torre-raio"); // retirar apos testes.
+            //_textureAnim1 = new Animacao(texture1, new Vector2(150, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
+            //_textureAnim2 = new Animacao(texture2, new Vector2(250, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
+            //_textureAnim3 = new Animacao(texture3, new Vector2(350, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
             base.LoadContent();
         }
 
@@ -53,17 +58,20 @@ namespace Infinity_TD
             {
                 OurGame.soundManager.playSound(3);
             }
-            _textureAnim1.Update(gameTime); // retirar apos testes.
-            _textureAnim2.Update(gameTime); // retirar apos testes.
-            _textureAnim3.Update(gameTime); // retirar apos testes.
+            //_textureAnim1.Update(gameTime); // retirar apos testes.
+            //_textureAnim2.Update(gameTime); // retirar apos testes.
+            //_textureAnim3.Update(gameTime); // retirar apos testes.
                 base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            _textureAnim1.Draw(OurGame.SpriteBatch); // retirar apos testes.
-            _textureAnim2.Draw(OurGame.SpriteBatch); // retirar apos testes.
-            _textureAnim3.Draw(OurGame.SpriteBatch); // retirar apos testes.
+            //_textureAnim1.Draw(OurGame.SpriteBatch); // retirar apos testes.
+            //_textureAnim2.Draw(OurGame.SpriteBatch); // retirar apos testes.
+            //_textureAnim3.Draw(OurGame.SpriteBatch); // retirar apos testes.
+
+            OurGame.SpriteBatch.Draw(stageTexture, Vector2.Zero, Color.White);
+
             base.Draw(gameTime);
         }
 
