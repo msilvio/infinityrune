@@ -31,7 +31,7 @@ namespace Infinity_TD
         //public Screens currentScreen = Screens.GAME;
 
         Texture2D mouseCursor;
-
+        
         //Estrutura de Menu
         private InputHandler input;
         private GameStateManager gameManager;

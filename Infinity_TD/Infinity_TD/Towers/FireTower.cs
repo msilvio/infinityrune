@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Infinity_TD.Towers
+namespace Infinity_TD
 {
     class FireTower : Tower
     {
