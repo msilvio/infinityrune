@@ -8,6 +8,8 @@ namespace Infinity_TD
 {
     static class Camera
     {
+        // classe não usada no jogo
+        
         static public Vector2 position = Vector2.Zero;
     }
 }
