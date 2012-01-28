@@ -2,14 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace Infinity_TD
 {
     public class RuneManager
     {
-        public int[] RuneBag;
-        public bool[] CheckRecipe;
-        public String[] RecipeBag;
+        public int[] RuneBag = new int[10];
+        public bool[] CheckRecipe = new bool[12];
+        public String[] RecipeBag = new String[12];
  
         public void RemoveRune(int i, int quantid)
         {
@@ -54,13 +61,12 @@ namespace Infinity_TD
 
         }
 
-        public void OpenRecipe(int i, bool Check)
+        public void OpenRecipe(int i)
         {
 
-            CheckRecipe[i] = Check;
+            CheckRecipe[i] = true;
 
         }
-
 
 
     }
