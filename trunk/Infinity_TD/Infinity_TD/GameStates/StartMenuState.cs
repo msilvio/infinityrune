@@ -23,7 +23,7 @@ namespace Infinity_TD
         {
             texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
             OurGame.soundManager.soundLoad("Menu");
-            //OurGame.soundManager.playSong();
+            OurGame.soundManager.playSong();
             font = Content.Load<SpriteFont>(@"Fonts\Arial");
             arrowTexture = Content.Load<Texture2D>(@"Graphics\Stuff\arrow");
 
@@ -55,22 +55,25 @@ namespace Infinity_TD
                         if (GameManager.ContainsState(OurGame.PlayingState.Value))
                         {
                             GameManager.PopState(); //got here from our playing state, just pop myself off the stack
-                            //OurGame.soundManager.stopSong();
+                            OurGame.soundManager.stopSong();
                         }
                         else
                             GameManager.ChangeState(OurGame.PlayingState.Value); 
                         break;
                     case 1:
-                        
+                        if (GameManager.ContainsState(OurGame.OptionsMenuState.Value))
+                        {
+                            GameManager.PopState(); //got here from our playing state, just pop myself off the stack
+                            OurGame.soundManager.stopSong();
+                        }
+                        else
+                            GameManager.ChangeState(OurGame.OptionsMenuState.Value); 
                         break;
                     case 2:
                         OurGame.Exit();
                         break;
                 }
             }
-
-            if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
-                OurGame.Exit();
 
             if (Input.WasPressed(0, InputHandler.ButtonType.DPadDown, Keys.Down))
             {

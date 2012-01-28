@@ -16,8 +16,7 @@ namespace Infinity_TD
         {
             texture = Content.Load<Texture2D>(@"Graphics\Stuff\titleIntro");
             OurGame.soundManager.soundLoad("Intro");
-           // OurGame.soundManager.playSong();
-
+            OurGame.soundManager.playSong();
             base.LoadContent();
         }
 
@@ -29,16 +28,11 @@ namespace Infinity_TD
 
         public override void Update(GameTime gameTime)
         {
-            if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
-                OurGame.Exit();
-
             if (Input.WasPressed(0, InputHandler.ButtonType.Start, Keys.Enter))
             {
                 // push our start menu onto the stack
                 GameManager.PushState(OurGame.StartMenuState.Value);
-      
             }
-
             base.Update(gameTime);
         }
 

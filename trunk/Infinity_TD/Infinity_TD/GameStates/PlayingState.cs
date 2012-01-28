@@ -42,9 +42,12 @@ namespace Infinity_TD
 
         public override void Update(GameTime gameTime)
         {
+            //if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
+            //    GameManager.PushState(OurGame.OptionsMenuState.Value);
 
+            // Retorno correto para o StartMenuState somente se o game nao estiver pausado
             if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
-                GameManager.PushState(OurGame.OptionsMenuState.Value);
+                GameManager.PushState(OurGame.StartMenuState.Value); 
 
             if (Input.WasPressed(0, InputHandler.ButtonType.Start, Keys.Enter))
                 GameManager.PushState(OurGame.PausedState.Value); // push our paused state onto the stack
