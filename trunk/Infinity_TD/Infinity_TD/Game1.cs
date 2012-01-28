@@ -16,6 +16,8 @@ namespace Infinity_TD
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch { get; set; }
+        SoundManager soundManager;
+
         //Menu menu;
         //Interface interf = new Interface();
         //KeyboardState previousState;
@@ -63,7 +65,7 @@ namespace Infinity_TD
             OptionsMenuState = new OptionsMenuState(this);
             PlayingState = new PlayingState(this);
             PausedState = new PausedState(this);
-
+            soundManager = new SoundManager(this);
             gameManager.ChangeState(TitleIntroState.Value);
         }
 
@@ -71,12 +73,15 @@ namespace Infinity_TD
         {
             //interf.InitializeInterface(this.Content);
             base.Initialize();
+
         }
 
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            mouseCursor = Content.Load<Texture2D>("Graphics/cursor1");
+            mouseCursor = Content.Load<Texture2D>("Graphics/Stuff/cursor1");
+            soundManager.soundLoad("Intro");
+            soundManager.playSong();
         }
 
         protected override void UnloadContent()

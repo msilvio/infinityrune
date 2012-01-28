@@ -84,10 +84,10 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
-            texture = Content.Load<Texture2D>(@"Graphics\startMenu");
+            texture = Content.Load<Texture2D>(@"Graphics\Stuff\startMenu");
 
             font = Content.Load<SpriteFont>(@"Fonts\Arial");
-            arrowTexture = Content.Load<Texture2D>(@"Graphics\arrow");
+            arrowTexture = Content.Load<Texture2D>(@"Graphics\Stuff\arrow");
 
             //START
             strings[0] = "INICIAR JOGO";

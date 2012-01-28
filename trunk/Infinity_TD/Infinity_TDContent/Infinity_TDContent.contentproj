@@ -42,34 +42,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\cursor1.png">
+    <Compile Include="Graphics\Stuff\cursor1.png">
       <Name>cursor1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\cursor2.png">
+    <Compile Include="Graphics\Stuff\cursor2.png">
       <Name>cursor2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\arrow.png">
+    <Compile Include="Graphics\Stuff\arrow.png">
       <Name>arrow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\optionsMenu.png">
+    <Compile Include="Graphics\Stuff\optionsMenu.png">
       <Name>optionsMenu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\startMenu.png">
+    <Compile Include="Graphics\Stuff\startMenu.png">
       <Name>startMenu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\titleIntro.png">
+    <Compile Include="Graphics\Stuff\titleIntro.png">
       <Name>titleIntro</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -81,6 +81,60 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Graphics\Road\_CaminhoCidade.png">
+      <Name>_CaminhoCidade</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Road\_CaminhoCidade2.png">
+      <Name>_CaminhoCidade2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Graphics\Enemy\_Robo1.png">
+      <Name>_Robo1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Enemy\_Robo2.png">
+      <Name>_Robo2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Enemy\_Robo3.png">
+      <Name>_Robo3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Enemy\_Robo4.png">
+      <Name>_Robo4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Enemy\_Robo5.png">
+      <Name>_Robo5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\Musics\Intro.mp3">
+      <Name>Intro</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Sounds\Musics\Menu.mp3">
+      <Name>Menu</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sounds\Effects\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
