@@ -11,6 +11,12 @@ namespace Infinity_TD
     class TileMap
     {
         public List<MapRow> Rows = new List<MapRow>();
+        public List<Tiles.EmptyTile> EmptyTileList = new List<Tiles.EmptyTile>();
+        public List<Tiles.RoadTile> RoadTileList = new List<Tiles.RoadTile>();
+        public List<Tiles.BlockedTile> BlockedTileList = new List<Tiles.BlockedTile>();
+        public List<Tiles.Waypoint> WaypointList = new List<Tiles.Waypoint>();
+        public List<Tiles.SpawnPoint> SpawnPointList = new List<Tiles.SpawnPoint>();
+        public List<Nexus> NexusList = new List<Nexus>();
         public int MapWidth = 24;
         public int MapHeight = 24;
         public int[,] Map = new int[24, 24];
@@ -28,7 +34,7 @@ namespace Infinity_TD
                 Rows.Add(thisRow);
             }
 
-            //Map = new int[12,16]
+            //Map = new int[24,24]
             //{
             //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -54,6 +60,17 @@ namespace Infinity_TD
             
         }
 
+        //INDEX DOS TILES:
+        // TILE VAZIO (PARA AS TORRES) -- 1
+        // ESTRADA -- 2
+        // TILE BLOQUEADO -- SEM TORRES -- 3
+        // WAYPOINT 1 -- 4
+        // WAYPOINT 2 -- 5
+        // WAYPOINT 3 -- 6
+        // ENTRADA -- 7
+        // NEXUS -- 8
+   
+
         public void initializeMap()
         {
             #region Init_Tiles
@@ -63,25 +80,79 @@ namespace Infinity_TD
                 {
                     if (Rows[row].Columns[column].TileID == 1)
                     {
-                        //MainTileList.Add(new MainTile());
-                        //MainTileList.Last().tileCoordinates = new Vector2(column, row);
-                        //MainTileList.Last().position.X = MainTileList.Last().tileCoordinates.X * 64;
-                        //MainTileList.Last().position.Y = MainTileList.Last().tileCoordinates.Y * 64;
-                        //MainTileList.Last().area = new Rectangle((int)MainTileList.Last().position.X, (int)MainTileList.Last().position.Y, 64, 64);
-                        //Rows[row].Columns[column].TileID = 0;
+                        EmptyTileList.Add(new Tiles.EmptyTile());
+                        EmptyTileList.Last().position.X = column * 32;
+                        EmptyTileList.Last().position.Y = row * 32;
+                        EmptyTileList.Last().area = new Rectangle((int)EmptyTileList.Last().position.X, (int)EmptyTileList.Last().position.Y, 32, 32);
+                        Rows[row].Columns[column].TileID = 0;
+                    }
+
+                    if (Rows[row].Columns[column].TileID == 2)
+                    {
+                        RoadTileList.Add(new Tiles.RoadTile());
+                        RoadTileList.Last().position.X = column * 32;
+                        RoadTileList.Last().position.Y = row * 32;
+                        RoadTileList.Last().area = new Rectangle((int)RoadTileList.Last().position.X, (int)RoadTileList.Last().position.Y, 32, 32);
+                        Rows[row].Columns[column].TileID = 0;
                     }
 
                     if (Rows[row].Columns[column].TileID == 3)
                     {
-                        //SpawnerList.Add(new EnemySpawner());
-                        //SpawnerList.Last().tileCoordinates = new Vector2(column, row);
-                        //SpawnerList.Last().position.X = SpawnerList.Last().tileCoordinates.X * 64;
-                        //SpawnerList.Last().position.Y = SpawnerList.Last().tileCoordinates.Y * 64;
-                        //SpawnerList.Last().area = new Rectangle((int)SpawnerList.Last().position.X, (int)SpawnerList.Last().position.Y, 64, 64);
-                        //Rows[row].Columns[column].TileID = 0;
+                        BlockedTileList.Add(new Tiles.BlockedTile());
+                        BlockedTileList.Last().position.X = column * 32;
+                        BlockedTileList.Last().position.Y = row * 32;
+                        BlockedTileList.Last().area = new Rectangle((int)BlockedTileList.Last().position.X, (int)BlockedTileList.Last().position.Y, 32, 32);
+                        Rows[row].Columns[column].TileID = 0;
                     }
 
- 
+                    if (Rows[row].Columns[column].TileID == 4)
+                    {
+                        WaypointList.Add(new Tiles.Waypoint());
+                        WaypointList.Last().position.X = column * 32;
+                        WaypointList.Last().position.Y = row * 32;
+                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 32, 32);
+                        WaypointList.Last().index = 1;
+                        Rows[row].Columns[column].TileID = 0;
+                    }
+
+                    if (Rows[row].Columns[column].TileID == 5)
+                    {
+                        WaypointList.Add(new Tiles.Waypoint());
+                        WaypointList.Last().position.X = column * 32;
+                        WaypointList.Last().position.Y = row * 32;
+                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 32, 32);
+                        WaypointList.Last().index = 2;
+                        Rows[row].Columns[column].TileID = 0;
+                    }
+
+                    if (Rows[row].Columns[column].TileID == 6)
+                    {
+                        WaypointList.Add(new Tiles.Waypoint());
+                        WaypointList.Last().position.X = column * 32;
+                        WaypointList.Last().position.Y = row * 32;
+                        WaypointList.Last().area = new Rectangle((int)WaypointList.Last().position.X, (int)WaypointList.Last().position.Y, 32, 32);
+                        WaypointList.Last().index = 3;
+                        Rows[row].Columns[column].TileID = 0;
+                    }
+
+                    if (Rows[row].Columns[column].TileID == 7)
+                    {
+                        SpawnPointList.Add(new Tiles.SpawnPoint());
+                        SpawnPointList.Last().position.X = column * 32;
+                        SpawnPointList.Last().position.Y = row * 32;
+                        SpawnPointList.Last().area = new Rectangle((int)SpawnPointList.Last().position.X, (int)SpawnPointList.Last().position.Y, 32, 32);
+                        Rows[row].Columns[column].TileID = 0;
+                    }
+
+                    if (Rows[row].Columns[column].TileID == 8)
+                    {
+                        NexusList.Add(new Nexus());
+                        NexusList.Last().position.X = column * 32;
+                        NexusList.Last().position.Y = row * 32;
+                        NexusList.Last().area = new Rectangle((int)NexusList.Last().position.X, (int)NexusList.Last().position.Y, 32, 32);
+                        Rows[row].Columns[column].TileID = 0;
+                    }
+
                 }
             }
             #endregion
