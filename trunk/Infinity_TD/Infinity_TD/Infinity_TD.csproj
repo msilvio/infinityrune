@@ -108,9 +108,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="CollisionHandler.cs" />
     <Compile Include="Combinator.cs" />
     <Compile Include="EffectControl.cs" />
-    <Compile Include="Enemy.cs" />
+    <Compile Include="Effects\Effect.cs" />
+    <Compile Include="Effects\PoisonEffect.cs" />
+    <Compile Include="Effects\SlowEffect.cs" />
+    <Compile Include="Enemy\Enemy.cs" />
+    <Compile Include="Enemy\EnemyManager.cs" />
+    <Compile Include="Shot.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Towers\FireTower.cs" />
     <Compile Include="Game1.cs" />

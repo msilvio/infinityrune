@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Infinity_TD
+namespace Infinity_TD.Effects
 {
-    class PoisonTower
+    class PoisonEffect
     {
+
     }
 }
