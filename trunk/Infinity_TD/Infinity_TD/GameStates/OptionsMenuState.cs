@@ -13,6 +13,13 @@ namespace Infinity_TD
     {
         Texture2D texture;
 
+        protected override void LoadContent()
+        {
+            texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
+
+            base.LoadContent();
+        }
+
         public OptionsMenuState(Game game)
             : base(game)
         {
@@ -36,11 +43,5 @@ namespace Infinity_TD
             base.Draw(gameTime);
         }
 
-        protected override void LoadContent()
-        {
-            texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
-
-            base.LoadContent();
-        }
     }
 }

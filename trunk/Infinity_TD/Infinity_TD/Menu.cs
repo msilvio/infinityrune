@@ -11,6 +11,7 @@ namespace Infinity_TD
 {
     class Menu
     {
+        // Classe sem uso no jogo
 
         public Texture2D background, ouroboros, arrow;
 
