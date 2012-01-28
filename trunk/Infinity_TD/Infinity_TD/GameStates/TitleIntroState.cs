@@ -14,7 +14,7 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
-            texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
+            texture = Content.Load<Texture2D>(@"Graphics\Stuff\titleIntro");
 
             base.LoadContent();
         }
