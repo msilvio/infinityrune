@@ -17,7 +17,7 @@ namespace Infinity_TD
         //Animacao _textureAnim1, _textureAnim2, _textureAnim3;
         //Texture2D texture1, texture2, texture3, texture4, texture5;
 
-        TileMap tileMap = new TileMap();
+        //TileMap tileMap = new TileMap();
 
         Texture2D stageTexture;
 
