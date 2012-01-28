@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Infinity_TD
 {
-    class SoundManager
+    public class SoundManager
     {
         Song themeSong;
         EffectControl effectControl;
@@ -26,6 +26,7 @@ namespace Infinity_TD
             this.game = game;
             effectControl = new EffectControl(game);
             effectControl.EffectLoad();
+
         }
 
 
@@ -44,13 +45,18 @@ namespace Infinity_TD
             if (playing == true)
             {
                 MediaPlayer.IsRepeating = true;
-              MediaPlayer.Play(themeSong);
+                MediaPlayer.Play(themeSong);
                 MediaPlayer.IsRepeating = true;
             }
             if (playing == false)
             {
                  MediaPlayer.Pause();
             }
+        }
+
+        public void stopSong()
+        {
+            MediaPlayer.Stop();
         }
     }
 }
