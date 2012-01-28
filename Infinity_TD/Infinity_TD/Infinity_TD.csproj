@@ -139,7 +139,6 @@
     <Compile Include="Interface.cs" />
     <Compile Include="Towers\LightningTower.cs" />
     <Compile Include="MapCell.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="Towers\PlasmaTower.cs" />
     <Compile Include="Towers\PoisonTower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,7 +148,7 @@
     <Compile Include="Tile.cs" />
     <Compile Include="TileMap.cs" />
     <Compile Include="Tooltip.cs" />
-    <Compile Include="Tower.cs" />
+    <Compile Include="Towers\Tower.cs" />
     <Compile Include="Towers\WaterTower.cs" />
   </ItemGroup>
   <ItemGroup>

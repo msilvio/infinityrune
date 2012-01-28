@@ -8,7 +8,7 @@ namespace Infinity_TD
 {
     static class Camera
     {
-        // classe não usada no jogo
+        // Necessário para a engine de Tile
         
         static public Vector2 position = Vector2.Zero;
     }
