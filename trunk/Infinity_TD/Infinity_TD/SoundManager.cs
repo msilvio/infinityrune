@@ -14,8 +14,8 @@ namespace Infinity_TD
 {
     class SoundManager
     {
-        SoundEffect soundEffect;
         Song themeSong;
+        EffectControl effectControl;
         public static bool IsRepeating { get; set; }
         public Boolean playing = true;
         public Game1 game;
@@ -24,6 +24,8 @@ namespace Infinity_TD
         public SoundManager(Game1 game)
         {
             this.game = game;
+            effectControl.EffectLoad();
+            effectControl = new EffectControl(game);
         }
 
 
@@ -32,9 +34,9 @@ namespace Infinity_TD
             tema = url;
             themeSong = game.Content.Load<Song>("Sounds/Musics/" + url);
         }
-        public void playSound()
+        public void playSound(int i)
         {
-            soundEffect.Play();
+            effectControl.lista[i].Play();
         }
 
         public void playSong()
