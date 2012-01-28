@@ -118,6 +118,7 @@
     <Compile Include="Enemy\EnemyManager.cs" />
     <Compile Include="Nexus.cs" />
     <Compile Include="Shot.cs" />
+    <Compile Include="RuneManager.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Tiles\BlockedTile.cs" />
     <Compile Include="Tiles\EmptyTile.cs" />
