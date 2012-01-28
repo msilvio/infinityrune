@@ -38,7 +38,7 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
-            texture = Content.Load<Texture2D>(@"Graphics\optionsMenu");
+            texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
 
             base.LoadContent();
         }
