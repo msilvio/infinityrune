@@ -28,7 +28,7 @@ namespace Infinity_TD
         {
             texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
             texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
-            texture3 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo3"); // retirar apos testes.
+            texture3 = Content.Load<Texture2D>(@"Graphics\Tower\torre-raio"); // retirar apos testes.
             _textureAnim1 = new Animacao(texture1, new Vector2(150, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
             _textureAnim2 = new Animacao(texture2, new Vector2(250, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
             _textureAnim3 = new Animacao(texture3, new Vector2(350, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
@@ -49,7 +49,7 @@ namespace Infinity_TD
                 OurGame.soundManager.playSound(1);
             }
 
-            if (Input.WasPressed(0, InputHandler.ButtonType.X, Keys.Z))
+            if (Input.WasPressed(0, InputHandler.ButtonType.Y, Keys.Z))
             {
                 OurGame.soundManager.playSound(3);
             }
