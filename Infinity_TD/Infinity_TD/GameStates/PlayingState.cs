@@ -32,12 +32,12 @@ namespace Infinity_TD
 
             if (Input.WasPressed(0, InputHandler.ButtonType.X, Keys.X))
             {
-                //simulate game over
-                //randomly pick if we win or lose
-            //    if (rand.Next(2) < 1) //lose                    
-            //        GameManager.PushState(OurGame.LostGameState.Value);
-            //    else //win                    
-            //        GameManager.PushState(OurGame.WonGameState.Value);
+                OurGame.soundManager.playSound(1);
+            }
+
+            if (Input.WasPressed(0, InputHandler.ButtonType.X, Keys.Z))
+            {
+                OurGame.soundManager.playSound(3);
             }
 
                 base.Update(gameTime);

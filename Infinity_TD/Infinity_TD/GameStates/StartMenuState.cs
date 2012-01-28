@@ -32,7 +32,10 @@ namespace Infinity_TD
                 {
                     case 0:
                         if (GameManager.ContainsState(OurGame.PlayingState.Value))
+                        {
                             GameManager.PopState(); //got here from our playing state, just pop myself off the stack
+                            //OurGame.soundManager.stopSong();
+                        }
                         else
                             GameManager.ChangeState(OurGame.PlayingState.Value); 
                         break;
@@ -85,6 +88,8 @@ namespace Infinity_TD
         protected override void LoadContent()
         {
             texture = Content.Load<Texture2D>(@"Graphics\Stuff\startMenu");
+            OurGame.soundManager.soundLoad("Menu");
+            OurGame.soundManager.playSong();
 
             font = Content.Load<SpriteFont>(@"Fonts\Arial");
             arrowTexture = Content.Load<Texture2D>(@"Graphics\Stuff\arrow");

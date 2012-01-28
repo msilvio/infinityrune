@@ -16,7 +16,7 @@ namespace Infinity_TD
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch { get; set; }
-        SoundManager soundManager;
+        public SoundManager soundManager;
 
         //Menu menu;
         //Interface interf = new Interface();
@@ -80,8 +80,6 @@ namespace Infinity_TD
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             mouseCursor = Content.Load<Texture2D>("Graphics/Stuff/cursor1");
-            soundManager.soundLoad("Intro");
-            soundManager.playSong();
         }
 
         protected override void UnloadContent()
