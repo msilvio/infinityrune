@@ -37,7 +37,7 @@ namespace Infinity_TD
 
         public override void Draw(GameTime gameTime)
         {
-            Vector2 pos = new Vector2(TitleSafeArea.Left + 50, TitleSafeArea.Top + 50);
+            Vector2 pos = new Vector2(TitleSafeArea.Left, TitleSafeArea.Top);
             OurGame.SpriteBatch.Draw(texture, pos, Color.White);
 
             base.Draw(gameTime);

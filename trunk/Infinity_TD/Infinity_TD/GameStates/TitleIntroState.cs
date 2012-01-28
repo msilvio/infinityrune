@@ -50,7 +50,5 @@ namespace Infinity_TD
             base.Draw(gameTime);
         }
 
-            //OurGame.soundManager.soundLoad("Intro");
-            //OurGame.soundManager.playSong();
     }
 }

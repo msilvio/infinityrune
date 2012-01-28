@@ -15,6 +15,7 @@ namespace Infinity_TD
         SpriteFont font;
         private string[] strings = new string[3];
         int menuStartY = 300;
+        int menuStartX = 580;
         int arrowSelectionIndex;
         Vector2 arrowPosition;
 
@@ -83,7 +84,7 @@ namespace Infinity_TD
                     arrowSelectionIndex--;
                 else arrowSelectionIndex = strings.Length - 1;
             }
-            arrowPosition = new Vector2(580, menuStartY + (32 * arrowSelectionIndex)); // posicao seta na tela do menu
+            arrowPosition = new Vector2(menuStartX, menuStartY + (32 * arrowSelectionIndex)); 
 
             base.Update(gameTime);
         }
@@ -94,7 +95,10 @@ namespace Infinity_TD
             OurGame.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
             for (int i = 0; i < strings.Length; i++)
             {
-                OurGame.SpriteBatch.DrawString(font, strings[i], new Vector2(640, menuStartY + (i * 32)), Color.Black);
+                OurGame.SpriteBatch.DrawString(font, strings[i], 
+                                                new Vector2(menuStartX + 50, 
+                                                            menuStartY + (i * 32)),
+                                                            Color.Black);
             }
 
             OurGame.SpriteBatch.Draw(arrowTexture, arrowPosition, Color.White);
@@ -110,9 +114,6 @@ namespace Infinity_TD
             if (GameManager.State != this.Value)
                 Visible = true;
         }
-
-            //OurGame.soundManager.soundLoad("Menu");
-            //OurGame.soundManager.playSong();
 
     }
 }
