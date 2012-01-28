@@ -70,13 +70,13 @@ namespace Infinity_TD
             if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
                 OurGame.Exit();
 
-            if (Input.WasPressed(0, InputHandler.ButtonType.A, Keys.Down))
+            if (Input.WasPressed(0, InputHandler.ButtonType.DPadDown, Keys.Down))
             {
                 if (arrowSelectionIndex != strings.Length - 1)
                     arrowSelectionIndex++;
                 else arrowSelectionIndex = 0;
             }
-            if (Input.WasPressed(0, InputHandler.ButtonType.B, Keys.Up))
+            if (Input.WasPressed(0, InputHandler.ButtonType.DPadUp, Keys.Up))
             {
                 if (arrowSelectionIndex != 0)
                     arrowSelectionIndex--;

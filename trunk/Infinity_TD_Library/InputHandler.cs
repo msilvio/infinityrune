@@ -29,7 +29,7 @@ namespace Infinity_TD_Library
     public partial class InputHandler
         : Microsoft.Xna.Framework.GameComponent, IInputHandler
     {
-        public enum ButtonType { A, B, Back, LeftShoulder, LeftStick, RightShoulder, RightStick, Start, X, Y }
+        public enum ButtonType { A, B, Back, LeftShoulder, LeftStick, RightShoulder, RightStick, Start, X, Y, DPadUp, DPadDown }
 
         private KeyboardHandler keyboard;
         private ButtonHandler gamePadHandler = new ButtonHandler();
@@ -228,6 +228,18 @@ namespace Infinity_TD_Library
                         return (gamePadsState[pi].Buttons.Y == ButtonState.Pressed &&
                             prevGamePadsState[pi].Buttons.Y == ButtonState.Released);
                     }
+                case InputHandler.ButtonType.DPadUp:
+                    {
+                        return (gamePadsState[pi].DPad.Up == ButtonState.Pressed &&
+                            prevGamePadsState[pi].DPad.Up == ButtonState.Released);
+                    }
+
+                case InputHandler.ButtonType.DPadDown:
+                    {
+                        return (gamePadsState[pi].DPad.Down == ButtonState.Pressed &&
+                            prevGamePadsState[pi].DPad.Down == ButtonState.Released);
+                    }
+
                 default:
                     throw (new ArgumentException());
             }
