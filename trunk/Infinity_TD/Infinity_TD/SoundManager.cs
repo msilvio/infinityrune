@@ -24,8 +24,8 @@ namespace Infinity_TD
         public SoundManager(Game1 game)
         {
             this.game = game;
-            effectControl.EffectLoad();
             effectControl = new EffectControl(game);
+            effectControl.EffectLoad();
         }
 
 
