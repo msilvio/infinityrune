@@ -316,35 +316,38 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\Scenes\desert.png">
-      <Name>desert</Name>
+    <Compile Include="Graphics\Stuff\Shots\corrosive rune.png">
+      <Name>corrosive rune</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Scenes\industry.png">
-      <Name>industry</Name>
+    <Compile Include="Graphics\Stuff\Shots\dark flames.png">
+      <Name>dark flames</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Scenes\mountain.png">
-      <Name>mountain</Name>
+    <Compile Include="Graphics\Stuff\Shots\fireball.png">
+      <Name>fireball</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Scenes\snow.png">
-      <Name>snow</Name>
+    <Compile Include="Graphics\Stuff\Shots\glacier rune.png">
+      <Name>glacier rune</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Scenes\taiga.png">
-      <Name>taiga</Name>
+    <Compile Include="Graphics\Stuff\Shots\infinityball.png">
+      <Name>infinityball</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Graphics\Stuff\textbox.png">
-      <Name>textbox</Name>
+    <Compile Include="Graphics\Stuff\Shots\magmqatic rune.png">
+      <Name>magmqatic rune</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Stuff\Shots\thunderstorm rune.png">
+      <Name>thunderstorm rune</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
