@@ -109,7 +109,7 @@ namespace Infinity_TD
 
         public void generateTower(Tiles.EmptyTile emptyTile)
         {
-            towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 1.4f));
+            towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 0.14f));
         }
 
         protected override void LoadContent()
