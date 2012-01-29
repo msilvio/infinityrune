@@ -13,6 +13,7 @@ namespace Infinity_TD
         public Vector2 Position;
         Animacao animation;
         float towerSpawn = 0.0f;
+        SoundManager soundaManager;
 
         public List<Shot> Shots
         {
@@ -60,16 +61,18 @@ namespace Infinity_TD
             }
         }
 
-        public static T getTower<T>(Texture2D texture, float damage, Vector2 position, float fireRate) where T : Tower
+        public static T getTower<T>(Game game, float damage, Vector2 position, float fireRate) where T : Tower
         {
-            return (T)Activator.CreateInstance(typeof(T), texture, damage, position, fireRate);
+            return (T)Activator.CreateInstance(typeof(T), game, damage, position, fireRate);
         }
 
-        public Tower(Texture2D texture, float _dmg, Vector2 position, float _fireRate)
+        public Tower(Game game, string textureName, float damage, Vector2 position, float fireRate)
         {
-            Damage = _dmg;
-            this.FireRate = _fireRate;
+            Damage = damage;
+            this.FireRate = fireRate;
             this.Position = position;
+            soundaManager = ((Game1)game).soundManager;
+            Texture2D texture = game.Content.Load<Texture2D>(@"Graphics\Tower\" + textureName);
 
             this.animation = new Animacao(texture, this.Position, 32, 32, 2, 90, 1.0f, true);
             Shots = new List<Shot>();
