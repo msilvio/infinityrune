@@ -12,7 +12,6 @@ namespace Infinity_TD
     public sealed class PausedState : BaseGameState, IPausedState
     {
         SpriteFont font;
-        RuneManager runeManager;
         String coisa;
         int i = 0;
 
@@ -26,8 +25,6 @@ namespace Infinity_TD
         protected override void LoadContent()
         {
             font = Content.Load<SpriteFont>(@"Fonts\Arial");
-            runeManager = new RuneManager();
-            runeManager.RecipeLoad();
 
             base.LoadContent();
         }
@@ -46,13 +43,6 @@ namespace Infinity_TD
         {
             OurGame.SpriteBatch.DrawString(font, "PAUSED", new Vector2(50, 20), Color.Yellow);
 
-            for (i = 0; i < runeManager.CheckRecipe.Length; i++)
-            {
-                if (runeManager.CheckRecipe[i] == true)
-                {
-                    OurGame.SpriteBatch.DrawString(font, runeManager.RecipeBag[i], new Vector2(100, 40 + i * 10), Color.Yellow);
-                }
-            }
             base.Draw(gameTime);
         }
 

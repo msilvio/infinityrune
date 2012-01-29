@@ -12,23 +12,24 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Infinity_TD
 {
-    public class RuneManager
+    public static class RuneManager
     {
-        public int[] RuneBag = new int[10];
-        public bool[] CheckRecipe = new bool[12];
-        public String[] RecipeBag = new String[12];
- 
-        public void RemoveRune(int i, int quantid)
+        public static int[] RuneBag = new int[10];
+        public static bool[] CheckRecipe = new bool[12];
+        public static String[] RecipeBag = new String[12];
+        public static Combinator.Runes[] RuneList = new Combinator.Runes[10];
+
+        public static void RemoveRune(int i, int quantid)
         {
             RuneBag[i] -= quantid;
         }
 
-        public void InsertRune(int i, int quantid)
+        public static void InsertRune(int i, int quantid)
         {
             RuneBag[i] += quantid;
         }
 
-        public void RecipeLoad()
+        public static void RecipeLoad()
         {
 
             #region RecipeArrays
@@ -59,9 +60,24 @@ namespace Infinity_TD
             CheckRecipe[11] = false;
             #endregion
 
+            #region RuneArrays
+
+            RuneList[1] = Combinator.Runes.FIRE;
+            RuneList[2] = Combinator.Runes.WATER;
+            RuneList[3] = Combinator.Runes.AIR;
+            RuneList[4] = Combinator.Runes.EARTH;
+            RuneList[5] = Combinator.Runes.LIGHTNING;
+            RuneList[6] = Combinator.Runes.NATURE;
+            RuneList[7] = Combinator.Runes.LIGHT;
+            RuneList[8] = Combinator.Runes.DARKNESS;
+            RuneList[9] = Combinator.Runes.COSMIC;
+            RuneList[10] = Combinator.Runes.INFINITY;
+
+            #endregion
+
         }
 
-        public void OpenRecipe(int i)
+        public static void OpenRecipe(int i)
         {
 
             CheckRecipe[i] = true;

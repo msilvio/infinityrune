@@ -17,6 +17,7 @@ namespace Infinity_TD
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch { get; set; }
         public SoundManager soundManager;
+        Rectangle mouseRec;
 
         //Menu menu;
         //Interface interf = new Interface();
@@ -73,6 +74,7 @@ namespace Infinity_TD
         {
             base.Initialize();
 
+            mouseRec = new Rectangle(0, 0, 1, 1);
         }
 
         protected override void LoadContent()
@@ -89,6 +91,10 @@ namespace Infinity_TD
 
         protected override void Update(GameTime gameTime)
         {
+
+            mouseRec.X = Mouse.GetState().X;
+            mouseRec.Y = Mouse.GetState().Y;
+
             //if (Keyboard.GetState().IsKeyDown(Keys.Escape)) this.Exit();
 
 

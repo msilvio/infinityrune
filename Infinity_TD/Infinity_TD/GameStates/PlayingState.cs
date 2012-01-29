@@ -36,8 +36,6 @@ namespace Infinity_TD
         {
             enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
 
-
-
             testEnemy = new Enemy(new Vector2(0, 564), enemyTexture);
             testEnemy.speed.X = 2f;
             MapArrays.mapListInit();
