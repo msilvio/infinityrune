@@ -33,10 +33,10 @@ namespace Infinity_TD
         {
 
             #region RecipeArrays
-            RecipeBag[0] = "Fire + Fire + Air = Fireball Rune";
+            RecipeBag[0] = "Fireball Rune \nFire + Fire + Air";
             RecipeBag[1] = "Water + Water + Air = Glacier Rune";
             RecipeBag[2] = "Air + Air + Air = Tornado Rune";
-            RecipeBag[3] = " Water + Air + Thunder =  Thunderstorm Rune";
+            RecipeBag[3] = "Thunderstorm Rune \nWater + Air + Thunder";
             RecipeBag[4] = "Earth + Earth + Fire = Earthquake Rune";
             RecipeBag[5] = "Nature + Nature + Earth = Corrisive Rune";
             RecipeBag[6] = "Fire + Earth + Fire = Magmatic Rune";
@@ -49,7 +49,7 @@ namespace Infinity_TD
             CheckRecipe[0] = true;
             CheckRecipe[1] = false;
             CheckRecipe[2] = false;
-            CheckRecipe[3] = false;
+            CheckRecipe[3] = true;
             CheckRecipe[4] = false;
             CheckRecipe[5] = false;
             CheckRecipe[6] = false;

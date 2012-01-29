@@ -51,7 +51,7 @@ namespace Infinity_TD
 
 
             stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\floresta");
-            font = Content.Load<SpriteFont>("Fonts/Arial");
+            font = Content.Load<SpriteFont>("Fonts/hud_font");
             //texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
             //texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
             //texture3 = Content.Load<Texture2D>(@"Graphics\Tower\torre-raio"); // retirar apos testes.

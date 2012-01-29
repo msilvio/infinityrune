@@ -11,9 +11,11 @@ namespace Infinity_TD
 {
     class Interface
     {
-        Texture2D sidebar, scroll, crafting, runebag, border;
+        Texture2D sidebar, border;
         Texture2D[] runes = new Texture2D[10];
         Texture2D[] recipes = new Texture2D[12];
+        SpriteFont interfaceFont;
+        string currentDrawString;
         Combinator.Tower currentTower;
         public Rectangle[] runeRectangles = new Rectangle[10];
         public Rectangle[] recipeRectangles = new Rectangle[12];
@@ -28,13 +30,21 @@ namespace Infinity_TD
         {
             combinator.InitializeRecipes();
             sidebar = content.Load<Texture2D>("Graphics/Stuff/hud_base");
-            //scroll = content.Load<Texture2D>("");
-            //crafting = content.Load<Texture2D>("");
-            //runebag = content.Load<Texture2D>("");
+            interfaceFont = content.Load<SpriteFont>("Fonts/hud_font");
             //border = content.Load<Texture2D>("");
             for (int i = 0; i < 9; i++)
             {
                 runes[i] = content.Load<Texture2D>("Graphics/Stuff/Screen/Um");
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                runeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70), 30, 30);
+            }
+
+            for (int i = 0; i < 12; i++)
+            {
+                recipeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70), 30, 30);
             }
 
             for (int i = 0; i < 12; i++)
@@ -74,9 +84,14 @@ namespace Infinity_TD
 
             for (int i = 0; i < 12; i++)
             {
+                if ((RuneManager.CheckRecipe[i] == true) && (mouseRec.Intersects(recipeRectangles[i])))
+                {
+                    currentDrawString = RuneManager.RecipeBag[i];
+                    break;
+                }
 
+                currentDrawString = null;
             }
-
 
             #endregion
 
@@ -88,7 +103,6 @@ namespace Infinity_TD
 
             for (int i = 0; i < 9; i++)
             {
-                runeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70), 30, 30);
                 spriteBatch.Draw(runes[i], new Vector2(positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70)), Color.White);
             }
 
@@ -99,8 +113,16 @@ namespace Infinity_TD
 
             for (int i = 0; i < 12; i++)
             {
-                recipeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70), 30, 30);
-                spriteBatch.Draw(recipes[i], new Vector2((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70)), Color.White);
+                if (RuneManager.CheckRecipe[i] == true)
+                {
+                    spriteBatch.Draw(recipes[i], new Vector2((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70)), Color.White);
+                }
+            }
+
+            if (currentDrawString != null)
+            {
+                spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(822, 687), Color.Black);
+                spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(820, 685), Color.Yellow);
 
             }
             
