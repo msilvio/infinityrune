@@ -11,7 +11,7 @@ namespace Infinity_TD
     class ShadowTower : Tower
     {
         public ShadowTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"dark_flames", @"darks", damage, position, fireRate, new Effect())
+            : base(game, damage, position, fireRate, @"dark_flames", @"darks", new Effect())
         {
 
         }

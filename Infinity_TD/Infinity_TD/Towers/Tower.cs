@@ -67,7 +67,7 @@ namespace Infinity_TD
             return (T1)Activator.CreateInstance(typeof(T1), game, damage, position, fireRate);
         }
 
-        public Tower(Game game, string textureName,string shotTexture, float damage, Vector2 position, float fireRate, Effect effect)
+        public Tower(Game game, float damage, Vector2 position, float fireRate, string textureName, string shotTexture, Effect effect)
         {
             Damage = damage;
             this.FireRate = fireRate;
@@ -94,6 +94,8 @@ namespace Infinity_TD
             if (towerSpawn > FireRate)
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
+                effect.origin = this.Position;
+                effect.Radious = this.range;
                 shot.Effect = effect;
                 soundaManager.playSound(i);
                 Shots.Add(shot);

@@ -10,7 +10,7 @@ namespace Infinity_TD.Towers
     class InfinityTower : Tower
     {
          public InfinityTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"infinity", @"fireball", damage, position, fireRate, new Effect())
+            : base(game, damage, position, fireRate, @"infinity", @"fireball", new Effect())
         {
         }
     }

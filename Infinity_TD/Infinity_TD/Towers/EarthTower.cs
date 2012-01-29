@@ -10,7 +10,7 @@ namespace Infinity_TD
     class EarthTower : Tower
     {
         public EarthTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"earthquake rune", @"fireball", damage, position, fireRate, new Effect())
+            : base(game, damage, position, fireRate, @"earthquake rune", @"fireball", new Effect())
         {
         }
         public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
