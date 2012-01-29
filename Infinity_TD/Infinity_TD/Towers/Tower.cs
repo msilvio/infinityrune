@@ -64,10 +64,19 @@ namespace Infinity_TD
 
         public static T1 getTower<T1>(Game game, float damage, Vector2 position, float fireRate) where T1 : Tower
         {
-            return (T1)Activator.CreateInstance(typeof(T1), game, damage, position, fireRate);
+            T1 tower = (T1)Activator.CreateInstance(typeof(T1));
+            tower.Initialize(game, damage, position, fireRate);
+            return tower;
         }
 
-        public Tower(Game game, float damage, Vector2 position, float fireRate, string textureName, string shotTexture, Effect effect)
+        public Tower()
+        {
+
+        }
+
+        public virtual void Initialize(Game game, float damage, Vector2 position, float fireRate) { }
+
+        protected void Initialize(Game game, string textureName, string shotTexture, float damage, Vector2 position, float fireRate, Effect effect)
         {
             Damage = damage;
             this.FireRate = fireRate;
@@ -85,8 +94,8 @@ namespace Infinity_TD
 
         }
 
-        public virtual void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture) 
-        {  
+        public virtual void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
         }
 
         protected void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture, int i)
@@ -94,8 +103,6 @@ namespace Infinity_TD
             if (towerSpawn > FireRate)
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
-                effect.origin = this.Position;
-                effect.Radious = this.range;
                 shot.Effect = effect;
                 soundaManager.playSound(i);
                 Shots.Add(shot);

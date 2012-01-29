@@ -11,15 +11,22 @@ namespace Infinity_TD.Towers
     class MagmaTower : Tower
     {
 
-           public MagmaTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, damage, position, fireRate, @"magmatic glyph", @"magmatic", new Effect())
+        //   public MagmaTower(Game game, float damage, Vector2 position, float fireRate)
+        //    : base(game, @"magmatic glyph", @"magmatic", damage, position, fireRate, new Effect())
+        //{
+        //    string shotTexture = "fireball";
+        //}
+
+        public override void Initialize(Game game, float damage, Vector2 position, float fireRate)
         {
-            string shotTexture = "fireball";
+            base.Initialize(game, @"magmatic glyph", @"magmatic", damage, position, fireRate, new BlackHoleEffect());
+
+
         }
 
-           public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
-           {
-               FireToEnemy(enemy, positionSource, texture, 0);
-           }
+        public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
+            FireToEnemy(enemy, positionSource, texture, 0);
+        }
     }
 }

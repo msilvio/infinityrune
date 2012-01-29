@@ -10,10 +10,15 @@ namespace Infinity_TD
 {
     class WaterTower : Tower
     {
-        public WaterTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, damage, position, fireRate, @"glacier rune1", @"glacier", new Effect())
-        {
+        //public WaterTower(Game game, float damage, Vector2 position, float fireRate)
+        //    : base(game, @"glacier rune1", @"glacier", damage, position, fireRate, new Effect())
+        //{
 
+        //}
+
+        public override void Initialize(Game game, float damage, Vector2 position, float fireRate)
+        {
+            base.Initialize(game, @"glacier rune1", @"glacier", damage, position, fireRate, new BlackHoleEffect());
         }
 
         public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)

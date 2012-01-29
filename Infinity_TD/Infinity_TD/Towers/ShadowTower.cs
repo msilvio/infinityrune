@@ -10,11 +10,17 @@ namespace Infinity_TD
 {
     class ShadowTower : Tower
     {
-        public ShadowTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, damage, position, fireRate, @"dark_flames", @"darks", new Effect())
-        {
+        //public ShadowTower(Game game, float damage, Vector2 position, float fireRate)
+        //    : base(game, @"dark_flames", @"darks", damage, position, fireRate, new Effect())
+        //{
 
+        //}
+
+        public override void Initialize(Game game, float damage, Vector2 position, float fireRate)
+        {
+            base.Initialize(game, @"dark_flames", @"darks", damage, position, fireRate, new BlackHoleEffect());
         }
+
 
         public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
         {
