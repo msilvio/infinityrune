@@ -52,36 +52,43 @@ namespace Infinity_TD
             {
                 case 0:
                     timeWaveGenerate = 10.0f;
+                    OurGame.soundManager.soundLoad("Final Fase");
                     break;
                 case 1:
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Musica Boss");
                     timeWaveGenerate = 5.0f;
                     ReinitializeMap(1);
                     break;
                 case 2:
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Final Fase");
                     ReinitializeMap(2);
                     break;
                 case 3:
                     //Deserto
                     stageTexture = Content.Load<Texture2D>("");
-                    OurGame.soundManager.soundLoad("Desert Song");
+                    OurGame.soundManager.soundLoad("Musica Boss");
                     ReinitializeMap(3);
                     break;
                 case 4:
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Final Fase");
                     ReinitializeMap(4);
                     break;
                 case 5:
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Musica Boss");
                     ReinitializeMap(5);
                     break;
                 case 6:
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Final Fase");
                     ReinitializeMap(6);
                     break;
                 case 7:
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Musica Boss");
                     ReinitializeMap(7);
                     break;
                 case 8:
@@ -168,6 +175,8 @@ namespace Infinity_TD
             {
                 RuneManager.InsertRune(i, 3);
             }
+
+            initializeLevel();
             enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
             MapArrays.mapListInit();
             tileMap = new TileMap(0);

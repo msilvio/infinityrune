@@ -13,5 +13,10 @@ namespace Infinity_TD.Towers
             : base(game, @"blinding_light", damage, position, fireRate, new LightningEffect())
         {
         }
+
+            public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+            {
+                FireToEnemy(enemy, positionSource, texture, 3);
+            }
     }
 }

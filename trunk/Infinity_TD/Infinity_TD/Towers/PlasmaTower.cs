@@ -11,5 +11,11 @@ namespace Infinity_TD
     {
         public PlasmaTower(Game game, float damage, Vector2 position, float fireRate)
             : base(game, @"sunglyph", damage, position, fireRate, new Effect()) { }
+
+        public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
+            FireToEnemy(enemy, positionSource, texture, 0);
+        }
     }
+
 }

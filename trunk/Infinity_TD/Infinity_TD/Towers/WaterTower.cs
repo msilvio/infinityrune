@@ -15,5 +15,10 @@ namespace Infinity_TD
         {
 
         }
+
+        public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
+            FireToEnemy(enemy, positionSource, texture, 2);
+        }
     }
 }

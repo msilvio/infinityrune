@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Infinity_TD
 {
@@ -12,6 +14,11 @@ namespace Infinity_TD
             : base(game, @"dark_flames", damage, position, fireRate, new Effect())
         {
 
+        }
+
+        public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
+            FireToEnemy(enemy, positionSource, texture, 0);
         }
     }
 }
