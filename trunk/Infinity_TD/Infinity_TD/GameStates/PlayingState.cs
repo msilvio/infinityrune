@@ -14,15 +14,15 @@ namespace Infinity_TD
         MouseState previousState;
         SpriteFont font;
         Random rand;
-        Color color;
         Interface hud = new Interface();
-        CollisionHandler colHandler = new CollisionHandler();
         Texture2D enemyTexture;
-        Enemy testEnemy;
 
         TileMap tileMap;
 
         public Texture2D stageTexture;
+
+        EnemyManager enemyManager;
+        List<Tower> towers = new List<Tower>();
 
         public PlayingState(Game game)
             : base(game)
@@ -78,11 +78,11 @@ namespace Infinity_TD
                         Infinity_TD.GameManager.currentLevel = 1;
                         Infinity_TD.GameManager.hard = true;
                         ReinitializeMap(1);
-                        
+
                     }
                     else
                     {
-                        stageTexture = Content.Load<Texture2D>(""); 
+                        stageTexture = Content.Load<Texture2D>("");
                     }
                     break;
 
@@ -101,9 +101,6 @@ namespace Infinity_TD
         protected override void LoadContent()
         {
             enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
-
-            testEnemy = new Enemy(new Vector2(0, 564), enemyTexture);
-            testEnemy.speed.X = 2f;
             MapArrays.mapListInit();
             tileMap = new TileMap(0);
             tileMap.initializeMap();
@@ -116,6 +113,16 @@ namespace Infinity_TD
 
 
             stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\floresta");
+            font = Content.Load<SpriteFont>("Fonts/menu_font");
+
+            enemyManager = new EnemyManager();
+
+            for (int i = 0; i < 4; ++i)
+            {
+                enemyManager.Add(new Enemy(tileMap.SpawnPointList[0].position, enemyTexture));
+            }
+
+            towers.Add(Tower.getTower<LightningTower>(Content.Load<Texture2D>("Graphics/Tower/torre-raio"), 10.0f, tileMap.EmptyTileList[250].position, 1.4f));
             font = Content.Load<SpriteFont>("Fonts/hud_font");
 
             base.LoadContent();
@@ -123,10 +130,7 @@ namespace Infinity_TD
 
         public override void Update(GameTime gameTime)
         {
-            testEnemy.Update(gameTime, tileMap);
             hud.UpdateInterface(gameTime, OurGame.mouseRec, previousState);
-
-            
 
             if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
                 GameManager.PushState(OurGame.OptionsMenuState.Value);
@@ -134,23 +138,81 @@ namespace Infinity_TD
             if (Input.WasPressed(0, InputHandler.ButtonType.Start, Keys.Enter))
                 GameManager.PushState(OurGame.PausedState.Value); // push our paused state onto the stack
 
+
+            UpdateEnemies(gameTime);
+
+            foreach (Tower tower in towers)
+            {
+                tower.Update(gameTime);
+
+                HandleCollision(tower, gameTime);
+            }
+
             previousState = Mouse.GetState();
-                base.Update(gameTime);
+            base.Update(gameTime);
+        }
+
+        private void UpdateEnemies(GameTime gameTime)
+        {
+            enemyManager.Update(gameTime, tileMap);
+
+            int drops = enemyManager.Drops;
+            if (drops > 0)
+            {
+                while (drops != 0)
+                {
+                    //RuneManager.
+                    //runeManager.InsertRune(, 1);
+
+                    --drops;
+                }
+            }
+        }
+
+        private void HandleCollision(Tower tower, GameTime gameTime)
+        {
+            List<Enemy> enemies = enemyManager.Collide(tower);
+            if (enemies != null)
+            {
+                Enemy nearEnemy = null;
+                float maxDistance = 1000.0f;
+                foreach (Enemy enemy in enemies)
+                {
+                    float actualDinstance = Vector2.Distance(enemy.Position, tower.Position);
+                    if (maxDistance > actualDinstance)
+                    {
+                        maxDistance = actualDinstance;
+                        nearEnemy = enemy;
+                    }
+                }
+                tower.FireToEnemy(nearEnemy, tower.Position, Content.Load<Texture2D>(@"Graphics\Stuff\cursor2"));
+            }
+
+            foreach (Shot shot in tower.Shots)
+            {
+                foreach (Enemy enemy in enemyManager.Enemies)
+                {
+                    if (enemy.BoundRect.Intersects(shot.BoundRect))
+                    {
+                        enemy.onCollision(shot);
+                    }
+                }
+
+            }
         }
 
         public override void Draw(GameTime gameTime)
-        {
-            
+        { 
             OurGame.SpriteBatch.Draw(stageTexture, Vector2.Zero, Color.White);
-            testEnemy.Draw(OurGame.SpriteBatch);
+            enemyManager.Draw(OurGame.SpriteBatch);
             hud.DrawInterface(OurGame.SpriteBatch);
-            OurGame.SpriteBatch.DrawString(font, Infinity_TD.GameManager.vidas.ToString(), Vector2.Zero, Color.White);
-            
-            //DEBUG
-            foreach (Infinity_TD.Tiles.Waypoint waypoint in tileMap.WaypointList)
+
+            foreach (Tower tower in towers)
             {
-                waypoint.Draw(OurGame.SpriteBatch);
+                tower.Draw(OurGame.SpriteBatch);
             }
+
+            OurGame.SpriteBatch.DrawString(font, tileMap.WaypointList[6].position.ToString() + tileMap.WaypointList[6].DirectionList[0].ToString(), Vector2.Zero, Color.White);
 
             base.Draw(gameTime);
         }
@@ -165,7 +227,5 @@ namespace Infinity_TD
                 Enabled = false;
             }
         }
-
-
     }
 }

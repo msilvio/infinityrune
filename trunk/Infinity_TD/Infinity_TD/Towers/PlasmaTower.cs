@@ -9,7 +9,7 @@ namespace Infinity_TD
 {
     class PlasmaTower : Tower
     {
-        public PlasmaTower(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate, TimeSpan _duration)
-            : base(_textura, _dmg, _pos, _fireRate, _duration) { }
+        public PlasmaTower(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate)
+            : base(_textura, _dmg, _pos, _fireRate) { }
     }
 }

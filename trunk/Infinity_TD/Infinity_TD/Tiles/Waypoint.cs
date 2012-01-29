@@ -21,10 +21,6 @@ namespace Infinity_TD.Tiles
         public Directions getDirection()
         {
             int random = MapArrays.random.Next(0, DirectionList.Count());
-
-            //Console.WriteLine(DirectionList.ElementAt(random).ToString());
-            //Console.WriteLine(random);
-
             return DirectionList.ElementAt(random);
         }
 
