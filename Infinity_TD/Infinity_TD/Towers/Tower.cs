@@ -20,6 +20,7 @@ namespace Infinity_TD
             get;
             private set;
         }
+        private Effect effect;
 
         private float Damage
         {
@@ -61,18 +62,19 @@ namespace Infinity_TD
             }
         }
 
-        public static T getTower<T>(Game game, float damage, Vector2 position, float fireRate) where T : Tower
+        public static T1 getTower<T1>(Game game, float damage, Vector2 position, float fireRate) where T1 : Tower
         {
-            return (T)Activator.CreateInstance(typeof(T), game, damage, position, fireRate);
+            return (T1)Activator.CreateInstance(typeof(T1), game, damage, position, fireRate);
         }
 
-        public Tower(Game game, string textureName, float damage, Vector2 position, float fireRate)
+        public Tower(Game game, string textureName, float damage, Vector2 position, float fireRate, Effect effect)
         {
             Damage = damage;
             this.FireRate = fireRate;
             this.Position = position;
             soundaManager = ((Game1)game).soundManager;
             Texture2D texture = game.Content.Load<Texture2D>(@"Graphics\Tower\" + textureName);
+            this.effect = effect;
 
             this.animation = new Animacao(texture, this.Position, 32, 32, 2, 90, 1.0f, true);
             Shots = new List<Shot>();
@@ -83,12 +85,12 @@ namespace Infinity_TD
 
         }
 
-        public virtual void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        public virtual void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture) 
         {
             if (towerSpawn > FireRate)
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
-                shot.Effect = new Effect();
+                shot.Effect = effect;
                 Shots.Add(shot);
                 towerSpawn = 0.0f;
                 
@@ -109,7 +111,6 @@ namespace Infinity_TD
                 {
                     Shots.RemoveAt(i);
                 }
-
             }
 
             foreach (Shot shot in Shots)

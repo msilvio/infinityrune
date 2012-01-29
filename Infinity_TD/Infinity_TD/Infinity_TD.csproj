@@ -113,14 +113,14 @@
     <Compile Include="Combinator.cs" />
     <Compile Include="EffectControl.cs" />
     <Compile Include="Effects\Effect.cs" />
+    <Compile Include="Effects\LightningEffect.cs" />
     <Compile Include="Effects\PoisonEffect.cs" />
-    <Compile Include="Effects\SlowEffect.cs" />
     <Compile Include="Enemy\Enemy.cs" />
     <Compile Include="Enemy\EnemyManager.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="MapArrays.cs" />
     <Compile Include="Nexus.cs" />
-    <Compile Include="Shot.cs" />
+    <Compile Include="Effects\Shot.cs" />
     <Compile Include="RuneManager.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Tiles\BlockedTile.cs" />
