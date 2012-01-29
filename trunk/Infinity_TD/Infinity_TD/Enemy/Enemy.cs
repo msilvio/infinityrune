@@ -37,7 +37,7 @@ namespace Infinity_TD
         {
             get
             {
-                return new Rectangle((int)position.X, (int)position.Y, enemyTexture.Width, enemyTexture.Height);
+                return new Rectangle((int)position.X, (int)position.Y, enemyAnimation.larguraFrame, enemyAnimation.alturaFrame);
             }
 
             set
@@ -60,8 +60,58 @@ namespace Infinity_TD
 
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, TileMap tileMap)
         {
+            foreach (Tiles.Waypoint waypoint in tileMap.WaypointList)
+            {
+                if (waypoint.area.Intersects(this.BoundRect))
+                {
+                    Infinity_TD.Tiles.Waypoint.Directions directions = waypoint.getDirection();
+
+                    switch (directions)
+                    {
+                        case Tiles.Waypoint.Directions.UP:
+                            if (speed.X != 0)
+                            {
+                                speed.Y = 0 - Math.Abs(speed.X);
+                                speed.X = 0;
+                                rotation = MathHelper.ToRadians(0f);
+
+                            }
+                            break;
+                        case Tiles.Waypoint.Directions.DOWN:
+                            if (speed.X != 0)
+                            {
+                                speed.Y = 0 + Math.Abs(speed.X);
+                                speed.X = 0;
+                                rotation = MathHelper.ToRadians(180f);
+
+                            }
+                            break;
+                        case Tiles.Waypoint.Directions.LEFT:
+                            if (speed.Y != 0)
+                            {
+                                speed.X = 0 - Math.Abs(speed.Y);
+                                speed.Y = 0;
+                                rotation = MathHelper.ToRadians(270f);
+
+                            }
+                            break;
+                        case Tiles.Waypoint.Directions.RIGHT:
+                            if (speed.Y != 0)
+                            {
+                                speed.X = 0 + Math.Abs(speed.Y);
+                                speed.Y = 0;
+                                rotation = MathHelper.ToRadians(90f);
+
+                            }
+                            break;
+                        
+                    }
+
+                }
+            }
+
             enemyAnimation.Update(gameTime, position);
 
             position += speed;

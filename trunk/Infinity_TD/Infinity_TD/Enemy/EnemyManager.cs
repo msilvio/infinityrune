@@ -25,8 +25,8 @@ namespace Infinity_TD
                 {
                     if (!enumerator.Current.Alive)
                         this.enemies.Remove(enumerator.Current);
-                    else
-                        enumerator.Current.Update(gameTime);
+                   // else
+                        //enumerator.Current.Update(gameTime);
 
                 }
             }
