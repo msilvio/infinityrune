@@ -22,7 +22,7 @@ namespace Infinity_TD
         public int[,] Map = new int[20, 19];
         public Random RNG = new Random();
 
-        public TileMap()
+        public TileMap(int levelID)
         {
             for (int y = 0; y < MapHeight; y++)
             {
@@ -34,7 +34,7 @@ namespace Infinity_TD
                 Rows.Add(thisRow);
             }
 
-            Map = MapArrays.Maplist.ElementAt(0);
+            Map = MapArrays.Maplist.ElementAt(levelID);
 
             for (int row = 0; row < Map.GetLength(0); row++)
             {

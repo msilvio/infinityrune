@@ -10,5 +10,6 @@ namespace Infinity_TD
     {
         public Vector2 position;
         public Rectangle area;
+
     }
 }

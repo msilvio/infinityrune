@@ -30,7 +30,7 @@ namespace Infinity_TD.Tiles
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(teste, area, Color.White);
+            //spriteBatch.Draw(teste, area, Color.White);
         }
 
     }

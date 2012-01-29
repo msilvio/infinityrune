@@ -116,6 +116,17 @@ namespace Infinity_TD
 
             #endregion
 
+            //UPDATE NEXUS
+            foreach (Nexus nexus in tileMap.NexusList)
+            {
+                if (nexus.area.Contains(BoundRect))
+                {
+                    GameManager.vidas--;
+                    this.alive = false;
+                }
+            }
+
+
             enemyAnimation.Update(gameTime, position);
 
             position += speed;

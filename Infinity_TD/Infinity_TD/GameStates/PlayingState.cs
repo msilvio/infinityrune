@@ -17,20 +17,85 @@ namespace Infinity_TD
         Color color;
         Interface hud = new Interface();
         CollisionHandler colHandler = new CollisionHandler();
-        //Animacao _textureAnim1, _textureAnim2, _textureAnim3;
-        //Texture2D texture1, texture2, texture3, texture4, texture5;
         Texture2D enemyTexture;
         Enemy testEnemy;
 
         TileMap tileMap;
 
-        Texture2D stageTexture;
+        public Texture2D stageTexture;
 
         public PlayingState(Game game)
             : base(game)
         {
             game.Services.AddService(typeof(IPlayingState), this);
             rand = new Random();
+        }
+
+        public void verifyEndGame()
+        {
+            if (Infinity_TD.GameManager.currentWave > Infinity_TD.GameManager.totalWaves)
+            {
+                Infinity_TD.GameManager.currentLevel++;
+                Infinity_TD.GameManager.currentWave = 0;
+            }
+        }
+
+        public void initializeLevel()
+        {
+            switch (Infinity_TD.GameManager.currentLevel)
+            {
+                case 1:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(1);
+                    break;
+                case 2:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(2);
+                    break;
+                case 3:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(3);
+                    break;
+                case 4:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(4);
+                    break;
+                case 5:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(5);
+                    break;
+                case 6:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(6);
+                    break;
+                case 7:
+                    stageTexture = Content.Load<Texture2D>("");
+                    ReinitializeMap(7);
+                    break;
+                case 8:
+                    if (Infinity_TD.GameManager.hard == false)
+                    {
+                        Infinity_TD.GameManager.currentLevel = 1;
+                        Infinity_TD.GameManager.hard = true;
+                        ReinitializeMap(1);
+                        
+                    }
+                    else
+                    {
+                        stageTexture = Content.Load<Texture2D>(""); 
+                    }
+                    break;
+
+            }
+        }
+
+
+
+        public void ReinitializeMap(int levelID)
+        {
+            tileMap = new TileMap(levelID);
+            tileMap.initializeMap();
+
         }
 
         protected override void LoadContent()
@@ -40,7 +105,7 @@ namespace Infinity_TD
             testEnemy = new Enemy(new Vector2(0, 564), enemyTexture);
             testEnemy.speed.X = 2f;
             MapArrays.mapListInit();
-            tileMap = new TileMap();
+            tileMap = new TileMap(0);
             tileMap.initializeMap();
             hud.InitializeInterface(this.Content);
 
@@ -52,12 +117,7 @@ namespace Infinity_TD
 
             stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\floresta");
             font = Content.Load<SpriteFont>("Fonts/hud_font");
-            //texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
-            //texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
-            //texture3 = Content.Load<Texture2D>(@"Graphics\Tower\torre-raio"); // retirar apos testes.
-            //_textureAnim1 = new Animacao(texture1, new Vector2(150, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
-            //_textureAnim2 = new Animacao(texture2, new Vector2(250, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
-            //_textureAnim3 = new Animacao(texture3, new Vector2(350, 150), 32, 32, 2, 90, 3.0f, true); // retirar apos testes.
+
             base.LoadContent();
         }
 
@@ -74,33 +134,17 @@ namespace Infinity_TD
             if (Input.WasPressed(0, InputHandler.ButtonType.Start, Keys.Enter))
                 GameManager.PushState(OurGame.PausedState.Value); // push our paused state onto the stack
 
-            if (Input.WasPressed(0, InputHandler.ButtonType.X, Keys.X))
-            {
-                OurGame.soundManager.playSound(1);
-            }
-
-            if (Input.WasPressed(0, InputHandler.ButtonType.Y, Keys.Z))
-            {
-                OurGame.soundManager.playSound(3);
-            }
-            //_textureAnim1.Update(gameTime); // retirar apos testes.
-            
             previousState = Mouse.GetState();
                 base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            //_textureAnim1.Draw(OurGame.SpriteBatch); // retirar apos testes.
-            //_textureAnim2.Draw(OurGame.SpriteBatch); // retirar apos testes.
-            //_textureAnim3.Draw(OurGame.SpriteBatch); // retirar apos testes.
-
-            
             
             OurGame.SpriteBatch.Draw(stageTexture, Vector2.Zero, Color.White);
             testEnemy.Draw(OurGame.SpriteBatch);
             hud.DrawInterface(OurGame.SpriteBatch);
-            OurGame.SpriteBatch.DrawString(font, tileMap.WaypointList[6].position.ToString() + tileMap.WaypointList[6].DirectionList[0].ToString(), Vector2.Zero, Color.White);
+            OurGame.SpriteBatch.DrawString(font, Infinity_TD.GameManager.vidas.ToString(), Vector2.Zero, Color.White);
             
             //DEBUG
             foreach (Infinity_TD.Tiles.Waypoint waypoint in tileMap.WaypointList)
