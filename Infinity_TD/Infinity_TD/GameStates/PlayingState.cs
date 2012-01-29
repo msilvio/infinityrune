@@ -35,13 +35,15 @@ namespace Infinity_TD
         protected override void LoadContent()
         {
             enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
-            testEnemy = new Enemy(new Vector2(0, 564), enemyTexture);
-            testEnemy.speed.X = 1f;
+            testEnemy = new Enemy(new Vector2(0, 560), enemyTexture);
+            testEnemy.speed.X = 2f;
             MapArrays.mapListInit();
             tileMap = new TileMap();
+            tileMap.initializeMap();
             hud.InitializeInterface(this.Content);
 
             stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\cidade");
+            font = Content.Load<SpriteFont>("Fonts/Arial");
             //texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
             //texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
             //texture3 = Content.Load<Texture2D>(@"Graphics\Tower\torre-raio"); // retirar apos testes.
@@ -53,7 +55,9 @@ namespace Infinity_TD
 
         public override void Update(GameTime gameTime)
         {
-            testEnemy.Update(gameTime);
+            testEnemy.Update(gameTime, tileMap);
+
+            
 
             if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
                 GameManager.PushState(OurGame.OptionsMenuState.Value);
@@ -83,10 +87,11 @@ namespace Infinity_TD
             //_textureAnim3.Draw(OurGame.SpriteBatch); // retirar apos testes.
 
             
+            
             OurGame.SpriteBatch.Draw(stageTexture, Vector2.Zero, Color.White);
             testEnemy.Draw(OurGame.SpriteBatch);
             hud.DrawInterface(OurGame.SpriteBatch);
-
+            OurGame.SpriteBatch.DrawString(font, tileMap.WaypointList[6].position.ToString() + tileMap.WaypointList[6].DirectionList[0].ToString(), Vector2.Zero, Color.White);
             base.Draw(gameTime);
         }
 

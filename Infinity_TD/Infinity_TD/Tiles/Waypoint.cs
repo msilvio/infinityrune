@@ -11,14 +11,15 @@ namespace Infinity_TD.Tiles
         public Vector2 position;
         public Rectangle area;
         public int index;
+        Random rand = new Random();
 
         public enum Directions { UP, LEFT, RIGHT, DOWN };
 
         public List<Directions> DirectionList = new List<Directions>();
 
-        public Directions getDirection(Random rand)
+        public Directions getDirection()
         {
-            int random = rand.Next(1, DirectionList.Count());
+            int random = rand.Next(0, DirectionList.Count() - 1);
             return DirectionList.ElementAt(random);
         }
 
