@@ -118,7 +118,6 @@ namespace Infinity_TD
                 waypoint.teste = Content.Load<Texture2D>("Graphics/Stuff/Cursor1");
             }
 
-
             stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\floresta");
             font = Content.Load<SpriteFont>("Fonts/menu_font");
 

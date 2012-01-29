@@ -60,9 +60,9 @@ namespace Infinity_TD
             }
         }
 
-        public static T getTower<T>(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate) where T : Tower
+        public static T getTower<T>(Texture2D texture, float damage, Vector2 position, float fireRate) where T : Tower
         {
-            return (T)Activator.CreateInstance(typeof(T), _textura, _dmg, _pos, _fireRate);
+            return (T)Activator.CreateInstance(typeof(T), texture, damage, position, fireRate);
         }
 
         public Tower(Texture2D texture, float _dmg, Vector2 position, float _fireRate)
@@ -85,6 +85,7 @@ namespace Infinity_TD
             if (towerSpawn > FireRate)
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
+                shot.Effect = new Effect();
                 Shots.Add(shot);
                 towerSpawn = 0.0f;
                 

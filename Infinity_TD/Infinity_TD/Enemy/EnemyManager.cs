@@ -60,13 +60,13 @@ namespace Infinity_TD
             for (int i = 0; i < Enemies.Count; ++i)
             {
                 Enemy enemy = Enemies[i];
-                if (!enemy.Alive)
+                if (enemy.Alive)
+                    enemy.Update(gameTime, tileMap);
+                else
                 {
-                    this.Enemies.Remove(enemy);
+                    this.Enemies.RemoveAt(i);
                     drops++;
                 }
-                else
-                    enemy.Update(gameTime, tileMap);
             }
         }
 
