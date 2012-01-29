@@ -86,14 +86,19 @@ namespace Infinity_TD
         }
 
         public virtual void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture) 
+        {  
+        }
+
+        protected void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture, int i)
         {
             if (towerSpawn > FireRate)
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
                 shot.Effect = effect;
+                soundaManager.playSound(i);
                 Shots.Add(shot);
                 towerSpawn = 0.0f;
-                
+
             }
             // return shot;
         }

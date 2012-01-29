@@ -13,5 +13,10 @@ namespace Infinity_TD.Towers
             : base(game, @"blackhole", damage, position, fireRate, new Effect())
         {
         }
+
+                public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+                {
+                    FireToEnemy(enemy, positionSource, texture, 0);
+                }
     }
 }

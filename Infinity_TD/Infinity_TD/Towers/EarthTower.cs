@@ -13,5 +13,9 @@ namespace Infinity_TD
             : base(game, @"earthquake rune", damage, position, fireRate, new Effect())
         {
         }
+        public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
+            FireToEnemy(enemy, positionSource, texture, 0);
+        }
     }
 }

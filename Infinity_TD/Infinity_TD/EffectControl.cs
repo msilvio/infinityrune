@@ -32,6 +32,10 @@ namespace Infinity_TD
             lista.Add(soundEffect);
             soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Glacier Shoot");
             lista.Add(soundEffect);
+            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Thunder Shoot");
+            lista.Add(soundEffect);
+            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Vlads voice");
+            lista.Add(soundEffect);
         }
     }
 }
