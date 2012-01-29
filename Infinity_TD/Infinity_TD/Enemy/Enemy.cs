@@ -11,19 +11,20 @@ namespace Infinity_TD
     class Enemy : ICollidable
     {
         float life;
-        Vector2 position;
+        public Vector2 Position;
         public Vector2 speed;
         Animacao enemyAnimation;
-        Texture2D enemyTexture;
         public float rotation = MathHelper.ToRadians(90f);
         Color color = Color.White;
+
+        private static Random random = new Random();
 
         private bool alive;
         public bool Alive
         {
             get
             {
-                return life < 0;
+                return !(life < 0);
             }
 
             private set
@@ -37,7 +38,7 @@ namespace Infinity_TD
         {
             get
             {
-                return new Rectangle((int)position.X, (int)position.Y, enemyAnimation.larguraFrame, enemyAnimation.alturaFrame);
+                return new Rectangle((int)Position.X, (int)Position.Y, enemyAnimation.larguraFrame, enemyAnimation.alturaFrame);
             }
 
             set
@@ -46,17 +47,37 @@ namespace Infinity_TD
             }
         }
 
+        private BoundingSphere boundCircle;
+        public BoundingSphere BoundCircle
+        {
+            get
+            {
+                return new BoundingSphere(new Vector3(this.Position, 0.0f), enemyAnimation.playerTextura.Width/2);
+            }
+            set
+            {
+                boundCircle = value;
+            }
+        }
+
+
         public Enemy(Vector2 position, Texture2D texture)
         {
-            this.position = position;
-            this.enemyTexture = texture;
+            this.Position = position;
+            speed.X = 1.0f + Enemy.random.Next(0, 3);
             life = 100.0f;
-            alive = true;
-            enemyAnimation = new Animacao(enemyTexture, position, 32, 32, 2, 90, 1f, true);
+            Alive = true;
+            enemyAnimation = new Animacao(texture, position, 32, 32, 2, 90, 1f, true);
         }
 
         public void onCollision(Object sender)
         {
+            Shot shot = (Shot)sender;
+
+            //Aplicar Efeito
+
+
+            shot.Alive = false;
 
         }
 
@@ -108,9 +129,7 @@ namespace Infinity_TD
 
                             }
                             break;
-                        
                     }
-
                 }
             }
 
@@ -127,17 +146,14 @@ namespace Infinity_TD
             }
 
 
-            enemyAnimation.Update(gameTime, position);
+            enemyAnimation.Update(gameTime, Position);
 
-            position += speed;
-
-
+            Position += speed;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             enemyAnimation.Draw(spriteBatch, rotation);
-            //spriteBatch.Draw(enemyTexture, BoundRect, Color.White);
         }
 
     }

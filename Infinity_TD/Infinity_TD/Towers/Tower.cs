@@ -7,11 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Infinity_TD
 {
-    class Tower
+    class Tower : ICollidable
     {
-        private Vector2 position;
-        private Texture2D texture;
-        private int range = 4;
+        private int range = 200;
+        public Vector2 Position;
+        Animacao animation;
+        float towerSpawn = 0.0f;
 
         public List<Shot> Shots
         {
@@ -25,37 +26,101 @@ namespace Infinity_TD
             set;
         }
 
-        private float fireRate
+        public float FireRate
         {
             get;
             set;
         }
 
-        private TimeSpan duration;
-        private float filerate;
 
-        public static T getTower<T>(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate, TimeSpan _duration) where T : Tower
+        private Rectangle boundRect;
+        public Rectangle BoundRect
         {
-            return (T)Activator.CreateInstance(typeof(T), _textura, _dmg, _pos, _fireRate, _duration); 
+            get
+            {
+                return new Rectangle((int)Position.X, (int)Position.Y, animation.larguraFrame, animation.alturaFrame);
+            }
+
+            set
+            {
+                boundRect = value;
+            }
         }
 
-        public Tower(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate, TimeSpan duration)
+        public BoundingSphere boundCircle;
+        public BoundingSphere BoundCircle
+        {
+            get
+            {
+                return new BoundingSphere(new Vector3(this.Position, 0.0f), range);
+            }
+            set
+            {
+                boundCircle = value;
+            }
+        }
+
+        public static T getTower<T>(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate) where T : Tower
+        {
+            return (T)Activator.CreateInstance(typeof(T), _textura, _dmg, _pos, _fireRate);
+        }
+
+        public Tower(Texture2D texture, float _dmg, Vector2 position, float _fireRate)
         {
             Damage = _dmg;
-            this.texture = _textura;
-            this.fireRate = _fireRate;
-            this.position = _pos;
-            this.duration = duration;
+            this.FireRate = _fireRate;
+            this.Position = position;
+
+            this.animation = new Animacao(texture, this.Position, 32, 32, 2, 90, 1.0f, true);
+            Shots = new List<Shot>();
+        }
+
+        public void onCollision(Object sender)
+        {
+
+        }
+
+        public virtual void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
+        {
+            if (towerSpawn > FireRate)
+            {
+                Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
+                Shots.Add(shot);
+                towerSpawn -= FireRate;
+            }
+            // return shot;
         }
 
         public virtual void Update(GameTime gameTime)
         {
+            this.animation.Update(gameTime, Position);
 
+            towerSpawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            for (int i = 0; i < Shots.Count; ++i)
+            {
+                Shot shot = Shots[i];
+                if (!shot.Alive)
+                {
+                    Shots.RemoveAt(i);
+                }
+
+            }
+
+            foreach (Shot shot in Shots)
+            {
+                shot.Update(gameTime);
+            }
         }
 
-        public virtual void Draw(SpriteBatch sb)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            sb.Draw(texture, position, Color.Wheat);
+            this.animation.Draw(spriteBatch, MathHelper.ToRadians(0.0f));
+
+            foreach (Shot shot in Shots)
+            {
+                shot.Draw(spriteBatch);
+            }
         }
     }
 }

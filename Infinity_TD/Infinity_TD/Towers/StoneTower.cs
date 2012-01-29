@@ -9,8 +9,8 @@ namespace Infinity_TD
 {
     class StoneTower : Tower
     {
-        public StoneTower(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate, TimeSpan _duration)
-            : base(_textura, _dmg, _pos, _fireRate, _duration)
+        public StoneTower(Texture2D _textura, float _dmg, Vector2 _pos, float _fireRate)
+            : base(_textura, _dmg, _pos, _fireRate)
         {
         }
     }

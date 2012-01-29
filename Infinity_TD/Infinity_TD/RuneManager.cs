@@ -83,7 +83,5 @@ namespace Infinity_TD
             CheckRecipe[i] = true;
 
         }
-
-
     }
 }
