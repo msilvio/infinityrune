@@ -14,6 +14,7 @@ namespace Infinity_TD
         Texture2D sidebar, border;
         Texture2D[] runes = new Texture2D[10];
         Texture2D[] recipes = new Texture2D[12];
+        Texture2D altMouseTex;
         SpriteFont interfaceFont;
         string currentDrawString;
         Combinator.Tower currentTower;
@@ -49,7 +50,7 @@ namespace Infinity_TD
 
             for (int i = 0; i < 12; i++)
             {
-                recipes[i] = content.Load<Texture2D>("Graphics/Stuff/Screen/Um");
+                recipes[i] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
 
             }
 
@@ -65,7 +66,7 @@ namespace Infinity_TD
                     if ((Mouse.GetState().LeftButton == ButtonState.Pressed) && (previousState.LeftButton == ButtonState.Released))
                     {
                         combinatorRunes[runeCount] = RuneManager.RuneList[i];
-                        Console.WriteLine(combinatorRunes[runeCount].ToString());//
+                        Console.WriteLine(combinatorRunes[runeCount].ToString());
                         combinatorRuneText[runeCount] = runes[i];
                         runeCount++;
 
@@ -73,6 +74,7 @@ namespace Infinity_TD
                         {
                              runeCount = 0;
                              currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                             altMouseTex = recipes[i];
 
                         }
                     }
@@ -115,7 +117,7 @@ namespace Infinity_TD
             {
                 if (RuneManager.CheckRecipe[i] == true)
                 {
-                    spriteBatch.Draw(recipes[i], new Vector2((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70)), Color.White);
+                    spriteBatch.Draw(recipes[i], new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70), 32, 32), new Rectangle(0,0,32,32), Color.White);
                 }
             }
 
@@ -124,6 +126,11 @@ namespace Infinity_TD
                 spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(822, 687), Color.Black);
                 spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(820, 685), Color.Yellow);
 
+            }
+
+            if (altMouseTex != null)
+            {
+                spriteBatch.Draw(altMouseTex, new Rectangle(Mouse.GetState().X, Mouse.GetState().Y,32,32), new Rectangle(0, 0, 32, 32), Color.White);
             }
             
         }

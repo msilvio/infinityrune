@@ -45,7 +45,8 @@ namespace Infinity_TD
                     {
                         if (rune3 == recipeArray[i].rune3)
                         {
-                            Console.WriteLine("1- " + rune1.ToString() + "2- " + rune2.ToString() + "3- " + rune3.ToString() + "  " + recipeArray[i].towerType.ToString());
+                            //Console.WriteLine("1- " + rune1.ToString() + "2- " + rune2.ToString() + "3- " + rune3.ToString() + "  " + recipeArray[i].towerType.ToString());
+                            RuneManager.OpenRecipe(i);
                             return recipeArray[i].towerType;
                         }
                     }
