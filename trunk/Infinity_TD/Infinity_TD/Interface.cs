@@ -11,7 +11,7 @@ namespace Infinity_TD
 {
     class Interface
     {
-        Texture2D sidebar, border;
+        Texture2D sidebar, border, textBox;
         Texture2D[] runes = new Texture2D[10];
         Texture2D[] recipes = new Texture2D[12];
         KeyboardState previousKeyboard;
@@ -32,9 +32,12 @@ namespace Infinity_TD
         {
             combinator.InitializeRecipes();
             sidebar = content.Load<Texture2D>("Graphics/Stuff/hud_base");
+
             interfaceFont = content.Load<SpriteFont>("Fonts/hud_font");
             //border = content.Load<Texture2D>("");
-            
+
+            textBox = content.Load<Texture2D>("Graphics/Stuff/textbox");
+
             runes[0] = content.Load<Texture2D>("Graphics/Runes/fogo-runa");
             runes[1] = content.Load<Texture2D>("Graphics/Runes/agua-runa");
             runes[2] = content.Load<Texture2D>("Graphics/Runes/ar-runa");
@@ -408,6 +411,8 @@ namespace Infinity_TD
                     spriteBatch.Draw(recipes[i], new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70), 32, 32), new Rectangle(0,0,32,32), Color.White);
                 }
             }
+
+            spriteBatch.Draw(textBox, new Vector2(positionX, 0), Color.White);
 
             if (currentDrawString != null)
             {
