@@ -11,7 +11,6 @@ namespace Infinity_TD.Tiles
     {
         public Vector2 position;
         public Rectangle area;
-        public int index;
         public Texture2D teste;
         
 
@@ -23,8 +22,8 @@ namespace Infinity_TD.Tiles
         {
             int random = MapArrays.random.Next(0, DirectionList.Count());
 
-            Console.WriteLine(DirectionList.ElementAt(random).ToString());
-            Console.WriteLine(random);
+            //Console.WriteLine(DirectionList.ElementAt(random).ToString());
+            //Console.WriteLine(random);
 
             return DirectionList.ElementAt(random);
         }

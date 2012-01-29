@@ -62,16 +62,16 @@ namespace Infinity_TD
 
             #region RuneArrays
 
-            RuneList[1] = Combinator.Runes.FIRE;
-            RuneList[2] = Combinator.Runes.WATER;
-            RuneList[3] = Combinator.Runes.AIR;
-            RuneList[4] = Combinator.Runes.EARTH;
-            RuneList[5] = Combinator.Runes.LIGHTNING;
-            RuneList[6] = Combinator.Runes.NATURE;
-            RuneList[7] = Combinator.Runes.LIGHT;
-            RuneList[8] = Combinator.Runes.DARKNESS;
-            RuneList[9] = Combinator.Runes.COSMIC;
-            RuneList[10] = Combinator.Runes.INFINITY;
+            RuneList[0] = Combinator.Runes.FIRE;
+            RuneList[1] = Combinator.Runes.WATER;
+            RuneList[2] = Combinator.Runes.AIR;
+            RuneList[3] = Combinator.Runes.EARTH;
+            RuneList[4] = Combinator.Runes.LIGHTNING;
+            RuneList[5] = Combinator.Runes.NATURE;
+            RuneList[6] = Combinator.Runes.LIGHT;
+            RuneList[7] = Combinator.Runes.DARKNESS;
+            RuneList[8] = Combinator.Runes.COSMIC;
+            RuneList[9] = Combinator.Runes.INFINITY;
 
             #endregion
 
