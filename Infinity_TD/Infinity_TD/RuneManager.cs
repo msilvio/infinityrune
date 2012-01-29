@@ -29,6 +29,42 @@ namespace Infinity_TD
             RuneBag[i] += quantid;
         }
 
+        public static void AddExistingRune(Combinator.Runes rune)
+        {
+            switch (rune)
+            {
+                case Combinator.Runes.FIRE:
+                    RuneBag[0]++;
+                    break;
+                case Combinator.Runes.WATER:
+                    RuneBag[1]++;
+                    break;
+                case Combinator.Runes.AIR:
+                    RuneBag[2]++;
+                    break;
+                case Combinator.Runes.EARTH:
+                    RuneBag[3]++;
+                    break;
+                case Combinator.Runes.LIGHTNING:
+                    RuneBag[4]++;
+                    break;
+                case Combinator.Runes.NATURE:
+                    RuneBag[5]++;
+                    break;
+                case Combinator.Runes.LIGHT:
+                    RuneBag[6]++;
+                    break;
+                case Combinator.Runes.DARKNESS:
+                    RuneBag[7]++;
+                    break;
+                case Combinator.Runes.COSMIC:
+                    RuneBag[8]++;
+                    break;
+
+            }
+        }
+
+
         public static void RecipeLoad()
         {
 
@@ -47,17 +83,17 @@ namespace Infinity_TD
             RecipeBag[11] = "Essence of Infinity \nInfinity x 3";
 
             CheckRecipe[0] = true;
-            CheckRecipe[1] = false;
-            CheckRecipe[2] = false;
-            CheckRecipe[3] = false;
-            CheckRecipe[4] = false;
-            CheckRecipe[5] = false;
-            CheckRecipe[6] = false;
-            CheckRecipe[7] = false;
-            CheckRecipe[8] = false;
-            CheckRecipe[9] = false;
-            CheckRecipe[10] = false;
-            CheckRecipe[11] = false;
+            CheckRecipe[1] = true;
+            CheckRecipe[2] = true;
+            CheckRecipe[3] = true;
+            CheckRecipe[4] = true;
+            CheckRecipe[5] = true;
+            CheckRecipe[6] = true;
+            CheckRecipe[7] = true;
+            CheckRecipe[8] = true;
+            CheckRecipe[9] = true;
+            CheckRecipe[10] = true;
+            CheckRecipe[11] = true;
             #endregion
 
             #region RuneArrays
