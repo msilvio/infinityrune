@@ -114,6 +114,10 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
+            for (int i = 0; i < 3; i++)
+            {
+                RuneManager.InsertRune(i, 3);
+            }
             enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
             MapArrays.mapListInit();
             tileMap = new TileMap(0);
@@ -137,7 +141,6 @@ namespace Infinity_TD
 
             //enemyManager.generateEnemiesWave(tileMap.SpawnPointList[0].position, Content, new EnemyWave(Infinity_TD.GameManager.currentLevel));
 
-            towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[250].position, 1.4f));
             font = Content.Load<SpriteFont>("Fonts/hud_font");
 
             initializeLevel();

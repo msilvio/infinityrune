@@ -34,10 +34,18 @@ namespace Infinity_TD
             sidebar = content.Load<Texture2D>("Graphics/Stuff/hud_base");
             interfaceFont = content.Load<SpriteFont>("Fonts/hud_font");
             //border = content.Load<Texture2D>("");
-            for (int i = 0; i < 9; i++)
-            {
-                runes[i] = content.Load<Texture2D>("Graphics/Stuff/Screen/Um");
-            }
+            
+            runes[0] = content.Load<Texture2D>("Graphics/Runes/fogo-runa");
+            runes[1] = content.Load<Texture2D>("Graphics/Runes/agua-runa");
+            runes[2] = content.Load<Texture2D>("Graphics/Runes/ar-runa");
+            runes[3] = content.Load<Texture2D>("Graphics/Runes/terra-runa");
+            runes[4] = content.Load<Texture2D>("Graphics/Runes/raio-runa");
+            runes[5] = content.Load<Texture2D>("Graphics/Runes/natureza-runa");
+            runes[6] = content.Load<Texture2D>("Graphics/Runes/luz-runa");
+            runes[7] = content.Load<Texture2D>("Graphics/Runes/dark-runa");
+            runes[8] = content.Load<Texture2D>("Graphics/Runes/cosmos-runa");
+            runes[9] = content.Load<Texture2D>("Graphics/Runes/fogo-runa");
+            
 
             for (int i = 0; i < 9; i++)
             {
@@ -49,11 +57,18 @@ namespace Infinity_TD
                 recipeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70), 30, 30);
             }
 
-            for (int i = 0; i < 12; i++)
-            {
-                recipes[i] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
-
-            }
+            recipes[0] = content.Load<Texture2D>("Graphics/Tower/torre-fogo");
+            recipes[1] = content.Load<Texture2D>("Graphics/Tower/glacier rune1");
+            recipes[2] = content.Load<Texture2D>("Graphics/Tower/tornado rune");
+            recipes[3] = content.Load<Texture2D>("Graphics/Tower/thunderstorm rune");
+            recipes[4] = content.Load<Texture2D>("Graphics/Tower/earthquake rune");
+            recipes[5] = content.Load<Texture2D>("Graphics/Tower/corrosive rune");
+            recipes[6] = content.Load<Texture2D>("Graphics/Tower/magmatic glyph1");
+            recipes[7] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
+            recipes[8] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
+            recipes[9] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
+            recipes[10] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
+            recipes[11] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
 
         }
 
@@ -66,9 +81,15 @@ namespace Infinity_TD
                 {
                     if ((Mouse.GetState().LeftButton == ButtonState.Pressed) && (previousState.LeftButton == ButtonState.Released))
                     {
-                        combinatorRunes[runeCount] = RuneManager.RuneList[i];
-                        combinatorRuneText[runeCount] = runes[i];
-                        runeCount++;
+
+                        if (RuneManager.RuneBag[i] >= 1)
+                        {
+                            combinatorRunes[runeCount] = RuneManager.RuneList[i];
+                            combinatorRuneText[runeCount] = runes[i];
+                            runeCount++;
+                            RuneManager.RemoveRune(i, 1);
+
+                        }
 
                         if( runeCount == 3)
                         {
@@ -76,7 +97,16 @@ namespace Infinity_TD
                              currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                              if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[i];
 
+                             if (currentTower == Combinator.Tower.INVALID)
+                             {
+                                 RuneManager.AddExistingRune(combinatorRunes[0]);
+                                 RuneManager.AddExistingRune(combinatorRunes[1]);
+                                 RuneManager.AddExistingRune(combinatorRunes[2]);
+                             }
+
                         }
+
+
                     }
                 }
             }
@@ -85,16 +115,25 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.Q)) && (previousKeyboard.IsKeyUp(Keys.Q)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[0];
-                combinatorRuneText[runeCount] = runes[0];
-                runeCount++;
-
+                if (RuneManager.RuneBag[0] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[0];
+                    combinatorRuneText[runeCount] = runes[0];
+                    runeCount++;
+                    RuneManager.RemoveRune(0, 1);
+                }
                 if (runeCount == 3)
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[0];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -102,9 +141,13 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.W)) && (previousKeyboard.IsKeyUp(Keys.W)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[1];
-                combinatorRuneText[runeCount] = runes[1];
-                runeCount++;
+                if (RuneManager.RuneBag[1] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[1];
+                    combinatorRuneText[runeCount] = runes[1];
+                    runeCount++;
+                    RuneManager.RemoveRune(1, 1);
+                }
 
                 if (runeCount == 3)
                 {
@@ -112,6 +155,12 @@ namespace Infinity_TD
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[1];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -119,9 +168,13 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.E)) && (previousKeyboard.IsKeyUp(Keys.E)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[2];
-                combinatorRuneText[runeCount] = runes[2];
-                runeCount++;
+                if (RuneManager.RuneBag[2] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[2];
+                    combinatorRuneText[runeCount] = runes[2];
+                    runeCount++;
+                    RuneManager.RemoveRune(2, 1);
+                }
 
                 if (runeCount == 3)
                 {
@@ -129,6 +182,12 @@ namespace Infinity_TD
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[2];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -137,15 +196,26 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.A)) && (previousKeyboard.IsKeyUp(Keys.A)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[3];
-                combinatorRuneText[runeCount] = runes[3];
-                runeCount++;
+                if (RuneManager.RuneBag[3] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[3];
+                    combinatorRuneText[runeCount] = runes[3];
+                    runeCount++;
+                    RuneManager.RemoveRune(3, 1);
+                }
 
                 if (runeCount == 3)
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[3];
+
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
 
                 }
 
@@ -155,9 +225,13 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.S)) && (previousKeyboard.IsKeyUp(Keys.S)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[4];
-                combinatorRuneText[runeCount] = runes[4];
-                runeCount++;
+                if (RuneManager.RuneBag[4] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[4];
+                    combinatorRuneText[runeCount] = runes[4];
+                    runeCount++;
+                    RuneManager.RemoveRune(4, 1);
+                }
 
                 if (runeCount == 3)
                 {
@@ -165,6 +239,12 @@ namespace Infinity_TD
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[4];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -173,9 +253,13 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.D)) && (previousKeyboard.IsKeyUp(Keys.D)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[5];
-                combinatorRuneText[runeCount] = runes[5];
-                runeCount++;
+                if (RuneManager.RuneBag[5] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[5];
+                    combinatorRuneText[runeCount] = runes[5];
+                    runeCount++;
+                    RuneManager.RemoveRune(5, 1);
+                }
 
                 if (runeCount == 3)
                 {
@@ -183,6 +267,12 @@ namespace Infinity_TD
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[5];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -191,9 +281,13 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.Z)) && (previousKeyboard.IsKeyUp(Keys.Z)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[6];
-                combinatorRuneText[runeCount] = runes[6];
-                runeCount++;
+                if (RuneManager.RuneBag[6] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[6];
+                    combinatorRuneText[runeCount] = runes[6];
+                    runeCount++;
+                    RuneManager.RemoveRune(6, 1);
+                }
 
                 if (runeCount == 3)
                 {
@@ -201,6 +295,12 @@ namespace Infinity_TD
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[6];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -209,9 +309,13 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.X)) && (previousKeyboard.IsKeyUp(Keys.X)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[7];
-                combinatorRuneText[runeCount] = runes[7];
-                runeCount++;
+                if (RuneManager.RuneBag[7] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[7];
+                    combinatorRuneText[runeCount] = runes[7];
+                    runeCount++;
+                    RuneManager.RemoveRune(7, 1);
+                }
 
                 if (runeCount == 3)
                 {
@@ -219,6 +323,12 @@ namespace Infinity_TD
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[7];
 
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
                 }
 
 
@@ -227,15 +337,26 @@ namespace Infinity_TD
 
             if ((Keyboard.GetState().IsKeyDown(Keys.C)) && (previousKeyboard.IsKeyUp(Keys.C)))
             {
-                combinatorRunes[runeCount] = RuneManager.RuneList[8];
-                combinatorRuneText[runeCount] = runes[8];
-                runeCount++;
+                if (RuneManager.RuneBag[8] >= 1)
+                {
+                    combinatorRunes[runeCount] = RuneManager.RuneList[8];
+                    combinatorRuneText[runeCount] = runes[8];
+                    runeCount++;
+                    RuneManager.RemoveRune(8, 1);
+                }
 
                 if (runeCount == 3)
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
                     if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[8];
+
+                    if (currentTower == Combinator.Tower.INVALID)
+                    {
+                        RuneManager.AddExistingRune(combinatorRunes[0]);
+                        RuneManager.AddExistingRune(combinatorRunes[1]);
+                        RuneManager.AddExistingRune(combinatorRunes[2]);
+                    }
 
                 }
 
@@ -271,6 +392,8 @@ namespace Infinity_TD
             for (int i = 0; i < 9; i++)
             {
                 spriteBatch.Draw(runes[i], new Vector2(positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70)), Color.White);
+                spriteBatch.DrawString(interfaceFont, Infinity_TD.RuneManager.RuneBag[i].ToString(), new Vector2(positionX + 45 + (int)((i % 3) * 60), 75 + (int)((i / 3) * 70)), Color.Orange);
+                spriteBatch.DrawString(interfaceFont, Infinity_TD.RuneManager.RuneBag[i].ToString(), new Vector2(positionX + 46 + (int)((i % 3) * 60), 76 + (int)((i / 3) * 70)), Color.Red);
             }
 
             for (int i = 0; i < runeCount; i++)
@@ -292,6 +415,8 @@ namespace Infinity_TD
                 spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(820, 685), Color.Yellow);
 
             }
+
+                
 
             if (altMouseTex != null)
             {

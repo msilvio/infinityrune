@@ -28,13 +28,13 @@ namespace Infinity_TD
             arrowTexture = Content.Load<Texture2D>(@"Graphics\Stuff\arrow");
 
             //START
-            strings[0] = "INICIAR JOGO";
+            strings[0] = "START GAME";
 
             //OPTIONS
-            strings[1] = "INSTRUCOES";
+            strings[1] = "INSTRUCTIONS";
 
             //EXIT
-            strings[2] = "SAIR";
+            strings[2] = "QUIT";
 
             base.LoadContent();
         }
