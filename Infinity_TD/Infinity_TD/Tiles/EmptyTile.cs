@@ -7,9 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Infinity_TD.Tiles
 {
-    class EmptyTile
+    public class EmptyTile
     {
         public Vector2 position;
         public Rectangle area;
+        public int index;
+        public bool full = false;
     }
 }

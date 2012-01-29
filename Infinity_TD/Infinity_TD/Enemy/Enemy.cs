@@ -145,6 +145,7 @@ namespace Infinity_TD
                 }
             }
 
+            if (life <= 0) this.alive = false;
 
             enemyAnimation.Update(gameTime, Position);
 

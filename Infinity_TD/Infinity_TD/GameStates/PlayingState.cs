@@ -93,13 +93,16 @@ namespace Infinity_TD
             }
         }
 
-
-
         public void ReinitializeMap(int levelID)
         {
             tileMap = new TileMap(levelID);
             tileMap.initializeMap();
 
+        }
+
+        public void generateTower(Tiles.EmptyTile emptyTile)
+        {
+            towers.Add(Tower.getTower<LightningTower>(Content.Load<Texture2D>("Graphics/Tower/torre-raio"), 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 1.4f));
         }
 
         protected override void LoadContent()
@@ -141,6 +144,24 @@ namespace Infinity_TD
 
             if (Input.WasPressed(0, InputHandler.ButtonType.Start, Keys.Enter))
                 GameManager.PushState(OurGame.PausedState.Value); // push our paused state onto the stack
+
+            #region UpdateEmptyTiles
+
+            foreach (Tiles.EmptyTile emptyTile in tileMap.EmptyTileList)
+            {
+                if (emptyTile.area.Contains(new Point(Mouse.GetState().X, Mouse.GetState().Y)))
+                {
+                    if ((hud.currentTower != Combinator.Tower.INVALID) && (Mouse.GetState().LeftButton == ButtonState.Pressed) && (emptyTile.full == false))
+                    {
+                        generateTower(emptyTile);
+                        emptyTile.full = true;
+                        hud.currentTower = Combinator.Tower.INVALID;
+                        hud.altMouseTex = null;
+                    }
+                }
+            }
+
+            #endregion
 
 
             UpdateEnemies(gameTime);
