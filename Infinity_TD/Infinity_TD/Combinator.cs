@@ -7,7 +7,7 @@ namespace Infinity_TD
 {
     public class Combinator
     {
-        public enum Tower { INVALID, FIREBALL, GLACIER, TORNADO, THUNDERSTORM, EARTHQUAKE, CORROSIVE, MAGMATIC, BLINDING, DARKFLAMES, SOLAR, BLACKHOLE, INFINITY } //TODO: ADICIONAR OUTRAS TORRES
+        public enum TowerType { INVALID, FIREBALL, GLACIER, TORNADO, THUNDERSTORM, EARTHQUAKE, CORROSIVE, MAGMATIC, BLINDING, DARKFLAMES, SOLAR, BLACKHOLE, INFINITY } //TODO: ADICIONAR OUTRAS TORRES
 
         public enum Runes { NONE, FIRE, WATER, AIR, EARTH, LIGHTNING, NATURE, LIGHT, DARKNESS, COSMIC, INFINITY }
 
@@ -18,23 +18,23 @@ namespace Infinity_TD
         {
             RuneManager.RecipeLoad();
 
-            recipeArray[0] = new Recipe(Runes.FIRE, Runes.FIRE, Runes.AIR, Tower.FIREBALL);
-            recipeArray[1] = new Recipe(Runes.WATER, Runes.WATER, Runes.AIR, Tower.GLACIER);
-            recipeArray[2] = new Recipe(Runes.AIR, Runes.AIR, Runes.AIR, Tower.TORNADO);
-            recipeArray[3] = new Recipe(Runes.WATER, Runes.AIR, Runes.LIGHTNING, Tower.THUNDERSTORM);
-            recipeArray[4] = new Recipe(Runes.EARTH, Runes.EARTH, Runes.FIRE, Tower.EARTHQUAKE);
-            recipeArray[5] = new Recipe(Runes.NATURE, Runes.NATURE, Runes.EARTH, Tower.CORROSIVE);
-            recipeArray[6] = new Recipe(Runes.FIRE, Runes.EARTH, Runes.FIRE, Tower.MAGMATIC);
-            recipeArray[7] = new Recipe(Runes.LIGHT, Runes.LIGHT, Runes.LIGHTNING, Tower.BLINDING);
-            recipeArray[8] = new Recipe(Runes.DARKNESS, Runes.FIRE, Runes.DARKNESS, Tower.DARKFLAMES);
-            recipeArray[9] = new Recipe(Runes.COSMIC, Runes.LIGHT, Runes.FIRE, Tower.SOLAR);
-            recipeArray[10] = new Recipe(Runes.COSMIC, Runes.DARKNESS, Runes.DARKNESS, Tower.BLACKHOLE);
-            recipeArray[11] = new Recipe(Runes.INFINITY, Runes.INFINITY, Runes.INFINITY, Tower.INFINITY);
+            recipeArray[0] = new Recipe(Runes.FIRE, Runes.FIRE, Runes.AIR, TowerType.FIREBALL);
+            recipeArray[1] = new Recipe(Runes.WATER, Runes.WATER, Runes.AIR, TowerType.GLACIER);
+            recipeArray[2] = new Recipe(Runes.AIR, Runes.AIR, Runes.AIR, TowerType.TORNADO);
+            recipeArray[3] = new Recipe(Runes.WATER, Runes.AIR, Runes.LIGHTNING, TowerType.THUNDERSTORM);
+            recipeArray[4] = new Recipe(Runes.EARTH, Runes.EARTH, Runes.FIRE, TowerType.EARTHQUAKE);
+            recipeArray[5] = new Recipe(Runes.NATURE, Runes.NATURE, Runes.EARTH, TowerType.CORROSIVE);
+            recipeArray[6] = new Recipe(Runes.FIRE, Runes.EARTH, Runes.FIRE, TowerType.MAGMATIC);
+            recipeArray[7] = new Recipe(Runes.LIGHT, Runes.LIGHT, Runes.LIGHTNING, TowerType.BLINDING);
+            recipeArray[8] = new Recipe(Runes.DARKNESS, Runes.FIRE, Runes.DARKNESS, TowerType.DARKFLAMES);
+            recipeArray[9] = new Recipe(Runes.COSMIC, Runes.LIGHT, Runes.FIRE, TowerType.SOLAR);
+            recipeArray[10] = new Recipe(Runes.COSMIC, Runes.DARKNESS, Runes.DARKNESS, TowerType.BLACKHOLE);
+            recipeArray[11] = new Recipe(Runes.INFINITY, Runes.INFINITY, Runes.INFINITY, TowerType.INFINITY);
 
         }
 
         //VERIFICA A COMBINAÇÃO DE RUNAS E RETORNA A TORRE EQUIVALENTE A ELAS
-        public Tower parseCombination(Runes rune1, Runes rune2, Runes rune3)
+        public TowerType parseCombination(Runes rune1, Runes rune2, Runes rune3)
         {
             
             for (int i = 0; i < 12; i++)
@@ -53,7 +53,7 @@ namespace Infinity_TD
                 }
             }
 
-            return Tower.INVALID;
+            return TowerType.INVALID;
         }
 
     }
@@ -61,9 +61,9 @@ namespace Infinity_TD
   public  class Recipe
     {
         public Combinator.Runes rune1, rune2, rune3;
-        public Combinator.Tower towerType;
+        public Combinator.TowerType towerType;
 
-        public Recipe(Combinator.Runes _rune1, Combinator.Runes _rune2, Combinator.Runes _rune3, Combinator.Tower _tower)
+        public Recipe(Combinator.Runes _rune1, Combinator.Runes _rune2, Combinator.Runes _rune3, Combinator.TowerType _tower)
         {
             rune1 = _rune1;
             rune2 = _rune2;

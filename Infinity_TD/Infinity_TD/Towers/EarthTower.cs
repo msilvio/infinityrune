@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace Infinity_TD
 {
-    class StoneTower : Tower
+    class EarthTower : Tower
     {
-        public StoneTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"torre-raio", damage, position, fireRate)
+        public EarthTower(Game game, float damage, Vector2 position, float fireRate)
+            : base(game, @"earthquake rune", damage, position, fireRate)
         {
         }
     }

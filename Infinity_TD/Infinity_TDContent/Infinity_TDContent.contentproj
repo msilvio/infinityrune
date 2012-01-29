@@ -151,13 +151,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\Tower\torre-raio.png">
-      <Name>torre-raio</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Graphics\Stuff\MenuFim.png">
       <Name>MenuFim</Name>
       <Importer>TextureImporter</Importer>
@@ -272,8 +265,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Tower\magmatic glyph1.png">
-      <Name>magmatic glyph1</Name>
+    <Compile Include="Graphics\Tower\magmatic glyph.png">
+      <Name>magmatic glyph</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -287,20 +280,37 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Tower\torre-fogo.png">
-      <Name>torre-fogo</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Graphics\Tower\torre-agua.png">
-      <Name>torre-agua</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Graphics\Tower\glacier rune1.png">
+      <Name>glacier rune1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\Tower\glacier rune1.png">
-      <Name>glacier rune1</Name>
+    <Compile Include="Graphics\Tower\blinding_light.png">
+      <Name>blinding_light</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Tower\dark_flames.png">
+      <Name>dark_flames</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Tower\infinity.png">
+      <Name>infinity</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Tower\blackhole.png">
+      <Name>blackhole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Graphics\Tower\sunglyph.png">
+      <Name>sunglyph</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

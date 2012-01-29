@@ -10,6 +10,6 @@ namespace Infinity_TD
     class PlasmaTower : Tower
     {
         public PlasmaTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"torre-raio", damage, position, fireRate) { }
+            : base(game, @"sunglyph", damage, position, fireRate) { }
     }
 }
