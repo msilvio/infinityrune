@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace Infinity_TD
 {
@@ -52,6 +53,20 @@ namespace Infinity_TD
             if (collideEnemies.Count == 0) return null;
 
             return collideEnemies;
+        }
+
+        public void generateEnemiesWave(Vector2 position, ContentManager content, EnemyWave enemyWave)
+        {
+            Texture2D texture;
+            string basePath = @"Graphics\Enemy\_Robo";
+
+            texture = content.Load<Texture2D>(basePath + (enemyWave.numEnemyTypes + 1));
+
+            for (int i = 0; i < enemyWave.numEnemies; ++i)
+            {
+                Enemies.Add(new Enemy(position, texture));
+            }
+           
         }
 
         public void Update(GameTime gameTime, TileMap tileMap)

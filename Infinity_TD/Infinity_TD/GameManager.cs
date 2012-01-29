@@ -17,12 +17,16 @@ namespace Infinity_TD
 
     class EnemyWave
     {
-        int[] numEnemies;
-        int numEnemyTypes;
+        public int numEnemies;
+        public int numEnemyTypes;
 
         public EnemyWave(int level)
         {
+            Random random = new Random(level);
 
+            numEnemies = random.Next(1, 10);
+
+            numEnemyTypes = 0;
         }
     }
 

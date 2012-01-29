@@ -24,6 +24,9 @@ namespace Infinity_TD
         EnemyManager enemyManager;
         List<Tower> towers = new List<Tower>();
 
+        float timeWaveGenerate;
+        float elapsedTimeGenerator;
+
         public PlayingState(Game game)
             : base(game)
         {
@@ -46,8 +49,12 @@ namespace Infinity_TD
 
             switch (Infinity_TD.GameManager.currentLevel)
             {
+                case 0:
+                    timeWaveGenerate = 10.0f;
+                    break;
                 case 1:
                     stageTexture = Content.Load<Texture2D>("");
+                    timeWaveGenerate = 5.0f;
                     ReinitializeMap(1);
                     break;
                 case 2:
@@ -102,7 +109,7 @@ namespace Infinity_TD
 
         public void generateTower(Tiles.EmptyTile emptyTile)
         {
-            towers.Add(Tower.getTower<LightningTower>(Content.Load<Texture2D>("Graphics/Tower/torre-raio"), 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 1.4f));
+            towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 1.4f));
         }
 
         protected override void LoadContent()
@@ -123,13 +130,17 @@ namespace Infinity_TD
 
             enemyManager = new EnemyManager();
 
-            for (int i = 0; i < 4; ++i)
-            {
-                enemyManager.Add(new Enemy(tileMap.SpawnPointList[0].position, enemyTexture));
-            }
+            //for (int i = 0; i < 4; ++i)
+            //{
+            //    enemyManager.Add(new Enemy(tileMap.SpawnPointList[0].position, enemyTexture));
+            //}
 
-            towers.Add(Tower.getTower<LightningTower>(Content.Load<Texture2D>("Graphics/Tower/torre-raio"), 10.0f, tileMap.EmptyTileList[250].position, 1.4f));
+            //enemyManager.generateEnemiesWave(tileMap.SpawnPointList[0].position, Content, new EnemyWave(Infinity_TD.GameManager.currentLevel));
+
+            towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[250].position, 1.4f));
             font = Content.Load<SpriteFont>("Fonts/hud_font");
+
+            initializeLevel();
 
             base.LoadContent();
         }
@@ -170,6 +181,14 @@ namespace Infinity_TD
                 tower.Update(gameTime);
 
                 HandleCollision(tower, gameTime);
+            }
+
+            elapsedTimeGenerator += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (elapsedTimeGenerator > timeWaveGenerate)
+            {
+                enemyManager.generateEnemiesWave(tileMap.SpawnPointList[0].position, Content, new EnemyWave(Infinity_TD.GameManager.currentLevel));
+                elapsedTimeGenerator -= timeWaveGenerate;
             }
 
             previousState = Mouse.GetState();
