@@ -24,7 +24,7 @@ namespace Infinity_TD
             texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
             OurGame.soundManager.soundLoad("Menu");
             OurGame.soundManager.playSong();
-            font = Content.Load<SpriteFont>(@"Fonts\Arial");
+            font = Content.Load<SpriteFont>(@"Fonts\menu_font");
             arrowTexture = Content.Load<Texture2D>(@"Graphics\Stuff\arrow");
 
             //START
@@ -87,7 +87,7 @@ namespace Infinity_TD
                     arrowSelectionIndex--;
                 else arrowSelectionIndex = strings.Length - 1;
             }
-            arrowPosition = new Vector2(menuStartX, menuStartY + (32 * arrowSelectionIndex)); 
+            arrowPosition = new Vector2(menuStartX, menuStartY + 11 + (50 * arrowSelectionIndex)); 
 
             base.Update(gameTime);
         }
@@ -100,8 +100,12 @@ namespace Infinity_TD
             {
                 OurGame.SpriteBatch.DrawString(font, strings[i], 
                                                 new Vector2(menuStartX + 50, 
-                                                            menuStartY + (i * 32)),
+                                                            menuStartY + (i * 50)),
                                                             Color.Black);
+                OurGame.SpriteBatch.DrawString(font, strings[i],
+                                new Vector2(menuStartX + 52,
+                                            menuStartY + (i * 50) + 2),
+                                            Color.White);
             }
 
             OurGame.SpriteBatch.Draw(arrowTexture, arrowPosition, Color.White);

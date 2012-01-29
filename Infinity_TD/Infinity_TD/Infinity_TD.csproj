@@ -117,6 +117,7 @@
     <Compile Include="Effects\SlowEffect.cs" />
     <Compile Include="Enemy\Enemy.cs" />
     <Compile Include="Enemy\EnemyManager.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="MapArrays.cs" />
     <Compile Include="Nexus.cs" />
     <Compile Include="Shot.cs" />

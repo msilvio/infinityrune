@@ -12,8 +12,6 @@ namespace Infinity_TD
     public sealed class PausedState : BaseGameState, IPausedState
     {
         SpriteFont font;
-        String coisa;
-        int i = 0;
 
         public PausedState(Game game)
             : base(game)
@@ -24,7 +22,7 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
-            font = Content.Load<SpriteFont>(@"Fonts\Arial");
+            font = Content.Load<SpriteFont>(@"Fonts\menu_font");
 
             base.LoadContent();
         }

@@ -17,7 +17,7 @@ namespace Infinity_TD
         protected override void LoadContent()
         {
             texture = Content.Load<Texture2D>(@"Graphics\Stuff\optionsMenu");
-            font = Content.Load<SpriteFont>(@"Fonts\Arial");
+            font = Content.Load<SpriteFont>(@"Fonts\menu_font");
             OurGame.soundManager.soundLoad("Menu");
             OurGame.soundManager.playSong();
             base.LoadContent();
