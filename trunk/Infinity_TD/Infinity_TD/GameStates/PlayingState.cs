@@ -55,39 +55,39 @@ namespace Infinity_TD
                     OurGame.soundManager.soundLoad("Final Fase");
                     break;
                 case 1:
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/floresta");
                     OurGame.soundManager.soundLoad("Musica Boss");
                     timeWaveGenerate = 5.0f;
                     ReinitializeMap(1);
                     break;
                 case 2:
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/snow");
                     OurGame.soundManager.soundLoad("Final Fase");
                     ReinitializeMap(2);
                     break;
                 case 3:
                     //Deserto
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/taiga");
                     OurGame.soundManager.soundLoad("Musica Boss");
                     ReinitializeMap(3);
                     break;
                 case 4:
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/mountain");
                     OurGame.soundManager.soundLoad("Final Fase");
                     ReinitializeMap(4);
                     break;
                 case 5:
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/deserto");
                     OurGame.soundManager.soundLoad("Musica Boss");
                     ReinitializeMap(5);
                     break;
                 case 6:
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/industry");
                     OurGame.soundManager.soundLoad("Final Fase");
                     ReinitializeMap(6);
                     break;
                 case 7:
-                    stageTexture = Content.Load<Texture2D>("");
+                    stageTexture = Content.Load<Texture2D>("Graphics/Scenes/floresta");
                     OurGame.soundManager.soundLoad("Musica Boss");
                     ReinitializeMap(7);
                     break;
