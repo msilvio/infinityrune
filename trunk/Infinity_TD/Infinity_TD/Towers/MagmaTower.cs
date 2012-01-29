@@ -12,7 +12,7 @@ namespace Infinity_TD.Towers
     {
 
            public MagmaTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"magmatic glyph", @"magmatic", damage, position, fireRate, new Effect())
+            : base(game, damage, position, fireRate, @"magmatic glyph", @"magmatic", new Effect())
         {
             string shotTexture = "fireball";
         }

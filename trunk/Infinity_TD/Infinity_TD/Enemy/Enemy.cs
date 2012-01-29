@@ -16,7 +16,10 @@ namespace Infinity_TD
         Animacao enemyAnimation;
         public float rotation = MathHelper.ToRadians(90f);
         Color color = Color.White;
-        float stopTime;
+        List<Effect> effectsTaken = new List<Effect>();
+
+        float stopTime, damageTime;
+        float damage, damageArea;
         private float elapsedTime;
 
         private static Random random = new Random();
@@ -78,31 +81,105 @@ namespace Infinity_TD
         {
             Shot shot = (Shot)sender;
 
-            Effect effec = shot.Effect;
+            Effect effect = shot.Effect;
+            effect.isValid = true;
+            effectsTaken.Add(effect);
+            //effec.Distance = Vector2.Distance(shot.Position, this.Position);
+            //speed.X -= effec.ReduceAmountVelocity;
+            //speed.Y -= effec.ReduceAmountVelocity;
+            //damage = effec.Damage;
 
-            speed.X -= effec.ReduceAmountVelocity;
-            speed.Y -= effec.ReduceAmountVelocity;
+            //damageCircle = new BoundingSphere(new Vector3(shot.Position, 0.0f), effec.DamageRadious);
+            //stopTime = effec.stopTime;
 
-            stopTime = effec.stopTime;
+            //shot.Alive = false;
+        }
 
-            shot.Alive = false;
+        private bool isLow()
+        {
+            return stopTime > 0.0f;
+        }
 
+        private bool consumeEffects(GameTime gameTime)
+        {
+            bool continueUpdate = true;
+            for(int i = 0; i < effectsTaken.Count; ++i)
+            {
+                Effect effect = effectsTaken[i];
+                float range = Vector2.DistanceSquared(Position, effect.origin);
+
+
+                if (range <= effect.Radious)
+                {
+                    effect.isValid = false;
+                }
+
+
+                if (effect.isValid)
+                {
+                    speed.X -= effect.ReduceAmountVelocity;
+                    speed.Y -= effect.ReduceAmountVelocity;
+
+
+
+                    if (stopTime > 0.0f)
+                    {
+                        elapsedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                        if (elapsedTime > stopTime)
+                        {
+                            stopTime = 0.0f;
+                            elapsedTime = 0.0f;
+                        }
+                        else
+                            continueUpdate = false;
+                    }
+                }else{
+                    effectsTaken.RemoveAt(i);
+                }
+            }
+
+            return continueUpdate;
         }
 
         public void Update(GameTime gameTime, TileMap tileMap)
         {
-            if(stopTime > 0.0f){
-                elapsedTime += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            if (consumeEffects(gameTime))
+                return;
 
-                if (elapsedTime > stopTime)
-                {
-                    stopTime = 0.0f;
-                    elapsedTime = 0.0f;
-                }
-                else
-                    return;
+            //if(damageCircle.Intersects(new BoundingSphere(new Vector3(this.Position, 0.0f), enemyAnimation.larguraFrame)))
+            //{
+            //    this.life = damage;
+            //}
 
-            }
+            //if (damageTime > 0.0f)
+            //{
+            //    damageTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            //    if (damageTime < 15.0f)
+            //    {
+            //        this.life -= damage;
+            //    }
+            //    else
+            //    {
+            //        damageTime = 0.0f;
+            //    }
+
+            //}
+
+            //if (isLow())
+            //{
+            //    elapsedTime += (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+            //    if (elapsedTime > stopTime)
+            //    {
+            //        stopTime = 0.0f;
+            //        elapsedTime = 0.0f;
+            //    }
+            //    else
+            //        return;
+
+            //}
 
             #region UpdateWaypoints
             foreach (Tiles.Waypoint waypoint in tileMap.WaypointList)

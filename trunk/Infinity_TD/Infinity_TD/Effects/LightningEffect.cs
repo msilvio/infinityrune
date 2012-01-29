@@ -15,7 +15,7 @@ namespace Infinity_TD
             }
         }
 
-        public override float DamageArea
+        public override float Damage
         {
             get
             {

@@ -11,7 +11,7 @@ namespace Infinity_TD
     class LightningTower : Tower
     {
         public LightningTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"thunderstorm rune", @"thunderstorm", damage, position, fireRate, new Effect())
+            : base(game, damage, position, fireRate, @"thunderstorm rune", @"thunderstorm", new Effect())
         { 
         
         }

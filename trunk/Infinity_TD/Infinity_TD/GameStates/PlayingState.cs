@@ -51,7 +51,7 @@ namespace Infinity_TD
             switch (Infinity_TD.GameManager.currentLevel)
             {
                 case 0:
-                    timeWaveGenerate = 10.0f;
+                    timeWaveGenerate = 5.0f;
                     OurGame.soundManager.soundLoad("Final Fase");
                     break;
                 case 1:

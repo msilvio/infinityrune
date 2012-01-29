@@ -112,6 +112,7 @@
     <Compile Include="CollisionHandler.cs" />
     <Compile Include="Combinator.cs" />
     <Compile Include="EffectControl.cs" />
+    <Compile Include="Effects\BlackHoleEffect.cs" />
     <Compile Include="Effects\Effect.cs" />
     <Compile Include="Effects\LightningEffect.cs" />
     <Compile Include="Effects\PoisonEffect.cs" />

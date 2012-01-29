@@ -12,7 +12,7 @@ namespace Infinity_TD
     {
 
         public FireTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"fireball rune",@"fireball" ,damage, position, fireRate, new Effect())
+            : base(game, damage, position, fireRate, @"fireball rune", @"fireball", new Effect())
         {
 
         }
