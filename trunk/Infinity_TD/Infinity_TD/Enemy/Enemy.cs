@@ -16,6 +16,8 @@ namespace Infinity_TD
         Animacao enemyAnimation;
         public float rotation = MathHelper.ToRadians(90f);
         Color color = Color.White;
+        float stopTime;
+        private float elapsedTime;
 
         private static Random random = new Random();
 
@@ -68,6 +70,8 @@ namespace Infinity_TD
             life = 100.0f;
             Alive = true;
             enemyAnimation = new Animacao(texture, position, 32, 32, 2, 90, 1f, true);
+            stopTime = 0.0f;
+            elapsedTime = 0.0f;
         }
 
         public void onCollision(Object sender)
@@ -76,6 +80,10 @@ namespace Infinity_TD
 
             Effect effec = shot.Effect;
 
+            speed.X -= effec.ReduceAmountVelocity;
+            speed.Y -= effec.ReduceAmountVelocity;
+
+            stopTime = effec.stopTime;
 
             shot.Alive = false;
 
@@ -83,6 +91,18 @@ namespace Infinity_TD
 
         public void Update(GameTime gameTime, TileMap tileMap)
         {
+            if(stopTime > 0.0f){
+                elapsedTime += (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (elapsedTime > stopTime)
+                {
+                    stopTime = 0.0f;
+                    elapsedTime = 0.0f;
+                }
+                else
+                    return;
+
+            }
 
             #region UpdateWaypoints
             foreach (Tiles.Waypoint waypoint in tileMap.WaypointList)

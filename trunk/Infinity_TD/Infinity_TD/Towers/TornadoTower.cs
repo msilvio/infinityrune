@@ -10,6 +10,6 @@ namespace Infinity_TD.Towers
     class TornadoTower : Tower
     {   
             public TornadoTower(Game game, float damage, Vector2 position, float fireRate)
-                : base(game, @"tornado rune", damage, position, fireRate) { }   
+            : base(game, @"tornado rune", damage, position, fireRate, new Effect()) { }   
     }
 }

@@ -10,5 +10,6 @@ namespace Infinity_TD
         public virtual float ReduceAmountVelocity { get { return 0; } }
         public virtual float ReduceAmountLife { get { return 0; } }
         public virtual float DamageArea { get { return 0; } }
+        public virtual float stopTime { get { return 0; } }
     }
 }

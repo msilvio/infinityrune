@@ -11,7 +11,7 @@ namespace Infinity_TD.Towers
     class MagmaTower : Tower
     {
            public MagmaTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"magmatic glyph", damage, position, fireRate)
+            : base(game, @"magmatic glyph", damage, position, fireRate, new Effect())
         {
         }
     }
