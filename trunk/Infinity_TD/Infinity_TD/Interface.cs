@@ -24,6 +24,7 @@ namespace Infinity_TD
 
         public void InitializeInterface(ContentManager content)
         {
+            combinator.InitializeRecipes();
             sidebar = content.Load<Texture2D>("Graphics/Stuff/hud_base");
             //scroll = content.Load<Texture2D>("");
             //crafting = content.Load<Texture2D>("");
@@ -45,13 +46,14 @@ namespace Infinity_TD
                     if ((Mouse.GetState().LeftButton == ButtonState.Pressed) && (previousState.LeftButton == ButtonState.Released))
                     {
                         combinatorRunes[runeCount] = RuneManager.RuneList[i];
+                        Console.WriteLine(combinatorRunes[runeCount].ToString());
                         combinatorRuneText[runeCount] = runes[i];
                         runeCount++;
 
                         if( runeCount == 3)
                         {
                              runeCount = 0;
-                             currentTower = (combinator.parseCombination(combinatorRunes[1], combinatorRunes[2], combinatorRunes[3]));
+                             currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
 
                         }
                     }
@@ -66,13 +68,13 @@ namespace Infinity_TD
 
             for (int i = 0; i < 9; i++)
             {
-                rectangles[i] = new Rectangle((int)positionX + 25 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70), 30, 30);
-                spriteBatch.Draw(runes[i], new Vector2(positionX + 25 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70)), Color.White);
+                rectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70), 30, 30);
+                spriteBatch.Draw(runes[i], new Vector2(positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70)), Color.White);
             }
 
             for (int i = 0; i < runeCount; i++)
             {
-                spriteBatch.Draw(combinatorRuneText[i], new Vector2(625 + 70 * i, 260), Color.White);
+                spriteBatch.Draw(combinatorRuneText[i], new Vector2(830 + 64 * i, 300), Color.White);
             }
 
                  /*spriteBatch.Draw(runebag, new Vector2(positionX, 30), Color.White);

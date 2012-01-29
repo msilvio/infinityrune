@@ -17,7 +17,7 @@ namespace Infinity_TD
         GraphicsDeviceManager graphics;
         public SpriteBatch SpriteBatch { get; set; }
         public SoundManager soundManager;
-        Rectangle mouseRec;
+        public Rectangle mouseRec;
 
         //Menu menu;
         //Interface interf = new Interface();

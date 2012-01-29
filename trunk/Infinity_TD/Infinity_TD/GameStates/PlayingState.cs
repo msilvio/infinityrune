@@ -11,6 +11,7 @@ namespace Infinity_TD
 {
     public sealed class PlayingState : BaseGameState, IPlayingState
     {
+        MouseState previousState;
         SpriteFont font;
         Random rand;
         Color color;
@@ -63,6 +64,7 @@ namespace Infinity_TD
         public override void Update(GameTime gameTime)
         {
             testEnemy.Update(gameTime, tileMap);
+            hud.UpdateInterface(gameTime, OurGame.mouseRec, previousState);
 
             
 
@@ -82,8 +84,8 @@ namespace Infinity_TD
                 OurGame.soundManager.playSound(3);
             }
             //_textureAnim1.Update(gameTime); // retirar apos testes.
-            //_textureAnim2.Update(gameTime); // retirar apos testes.
-            //_textureAnim3.Update(gameTime); // retirar apos testes.
+            
+            previousState = Mouse.GetState();
                 base.Update(gameTime);
         }
 
