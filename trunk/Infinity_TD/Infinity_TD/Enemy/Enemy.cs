@@ -12,7 +12,10 @@ namespace Infinity_TD
     {
         float life;
         Vector2 position;
+        public Vector2 speed;
+        Animacao enemyAnimation;
         Texture2D enemyTexture;
+        float rotation = MathHelper.ToRadians(90f);
         Color color = Color.White;
 
         private bool alive;
@@ -49,6 +52,7 @@ namespace Infinity_TD
             this.enemyTexture = texture;
             life = 100.0f;
             alive = true;
+            enemyAnimation = new Animacao(enemyTexture, position, 32, 32, 2, 90, 1f, true);
         }
 
         public void onCollision(Object sender)
@@ -58,12 +62,16 @@ namespace Infinity_TD
 
         public void Update(GameTime gameTime)
         {
+            enemyAnimation.Update(gameTime, position);
+
+            position += speed;
+
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(enemyTexture, position, color);
+            enemyAnimation.Draw(spriteBatch, rotation);
         }
 
     }

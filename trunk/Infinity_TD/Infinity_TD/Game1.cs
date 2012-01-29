@@ -45,7 +45,6 @@ namespace Infinity_TD
 
         public Game1()
         {
-           // menu = new Menu();
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1024;
@@ -72,7 +71,6 @@ namespace Infinity_TD
 
         protected override void Initialize()
         {
-            //interf.InitializeInterface(this.Content);
             base.Initialize();
 
         }

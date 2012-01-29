@@ -14,10 +14,14 @@ namespace Infinity_TD
         SpriteFont font;
         Random rand;
         Color color;
+        Interface hud = new Interface();
+        CollisionHandler colHandler = new CollisionHandler();
         //Animacao _textureAnim1, _textureAnim2, _textureAnim3;
         //Texture2D texture1, texture2, texture3, texture4, texture5;
+        Texture2D enemyTexture;
+        Enemy testEnemy;
 
-        //TileMap tileMap = new TileMap();
+        TileMap tileMap;
 
         Texture2D stageTexture;
 
@@ -30,6 +34,13 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
+            enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
+            testEnemy = new Enemy(new Vector2(0, 564), enemyTexture);
+            testEnemy.speed.X = 1f;
+            MapArrays.mapListInit();
+            tileMap = new TileMap();
+            hud.InitializeInterface(this.Content);
+
             stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\cidade");
             //texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
             //texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
@@ -42,12 +53,10 @@ namespace Infinity_TD
 
         public override void Update(GameTime gameTime)
         {
-            //if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
-            //    GameManager.PushState(OurGame.OptionsMenuState.Value);
+            testEnemy.Update(gameTime);
 
-            // Retorno correto para o StartMenuState somente se o game nao estiver pausado
             if (Input.WasPressed(0, InputHandler.ButtonType.Back, Keys.Escape))
-                GameManager.PushState(OurGame.StartMenuState.Value); 
+                GameManager.PushState(OurGame.OptionsMenuState.Value);
 
             if (Input.WasPressed(0, InputHandler.ButtonType.Start, Keys.Enter))
                 GameManager.PushState(OurGame.PausedState.Value); // push our paused state onto the stack
@@ -73,7 +82,10 @@ namespace Infinity_TD
             //_textureAnim2.Draw(OurGame.SpriteBatch); // retirar apos testes.
             //_textureAnim3.Draw(OurGame.SpriteBatch); // retirar apos testes.
 
+            
             OurGame.SpriteBatch.Draw(stageTexture, Vector2.Zero, Color.White);
+            testEnemy.Draw(OurGame.SpriteBatch);
+            hud.DrawInterface(OurGame.SpriteBatch);
 
             base.Draw(gameTime);
         }
