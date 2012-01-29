@@ -180,8 +180,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\Stuff\hud_base.png">
-      <Name>hud_base</Name>
+    <Compile Include="Graphics\Stuff\MenuFim.png">
+      <Name>MenuFim</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
