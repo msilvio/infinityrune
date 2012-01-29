@@ -9,8 +9,16 @@ namespace Infinity_TD
 {
     class PlasmaTower : Tower
     {
-        public PlasmaTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, damage, position, fireRate, @"sunglyph", @"fireball", new Effect()) { }
+        //public PlasmaTower(Game game, float damage, Vector2 position, float fireRate)
+        //    : base(game, @"sunglyph", @"fireball", damage, position, fireRate, new Effect()) { }
+
+        public override void Initialize(Game game, float damage, Vector2 position, float fireRate)
+        {
+            base.Initialize(game, @"sunglyph", @"fireball", damage, position, fireRate, new BlackHoleEffect());
+
+
+        }
+
 
         public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
         {

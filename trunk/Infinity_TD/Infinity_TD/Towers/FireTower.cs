@@ -11,15 +11,20 @@ namespace Infinity_TD
     class FireTower : Tower
     {
 
-        public FireTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, damage, position, fireRate, @"fireball rune", @"fireball", new Effect())
-        {
+        //public FireTower(Game game, float damage, Vector2 position, float fireRate)
+        //    : base(game, @"fireball rune",@"fireball" ,damage, position, fireRate, new Effect())
+        //{
 
+        //}
+
+        public override void Initialize(Game game, float damage, Vector2 position, float fireRate)
+        {
+            base.Initialize(game, @"fireball rune", @"fireball", damage, position, fireRate, new BlackHoleEffect());
         }
 
         public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
         {
-            
+
             FireToEnemy(enemy, positionSource, texture, 0);
         }
     }

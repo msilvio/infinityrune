@@ -254,6 +254,9 @@ namespace Infinity_TD
             }
 
             previousState = Mouse.GetState();
+            if (Infinity_TD.GameManager.vidas == 0) {
+                OurGame.Exit();
+            }
             base.Update(gameTime);
         }
 
@@ -317,7 +320,7 @@ namespace Infinity_TD
                 tower.Draw(OurGame.SpriteBatch);
             }
 
-            OurGame.SpriteBatch.DrawString(font, tileMap.WaypointList[6].position.ToString() + tileMap.WaypointList[6].DirectionList[0].ToString(), Vector2.Zero, Color.White);
+            OurGame.SpriteBatch.DrawString(font, "Vidas: " + Infinity_TD.GameManager.vidas.ToString(), Vector2.Zero, Color.White);
 
             base.Draw(gameTime);
         }
