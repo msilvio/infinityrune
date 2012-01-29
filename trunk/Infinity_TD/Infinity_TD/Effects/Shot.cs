@@ -15,7 +15,7 @@ namespace Infinity_TD
         private Enemy targetEnemy;
         public float speed;
         private Texture2D texture;
-
+        private Animacao animation;
         public bool Alive { get; set; }
 
         private Rectangle boundRect;
@@ -45,6 +45,7 @@ namespace Infinity_TD
             this.Position = position;
             this.targetEnemy = targetEnemy;
             this.speed = speed;
+            this.animation = new Animacao(texture, this.Position, 16, 16, 2, 90, 1.0f, true);
             Alive = true;
         }
 
@@ -54,12 +55,12 @@ namespace Infinity_TD
             direction.Normalize();
 
             Position += direction * speed;
+            animation.Update(gameTime,Position);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Position, Color.White);
-
+            animation.Draw(spriteBatch, 0.0f);
         }
 
     }
