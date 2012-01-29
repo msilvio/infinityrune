@@ -70,6 +70,7 @@ namespace Infinity_TD
                         EmptyTileList.Last().position.X = column * 40;
                         EmptyTileList.Last().position.Y = row * 40;
                         EmptyTileList.Last().area = new Rectangle((int)EmptyTileList.Last().position.X, (int)EmptyTileList.Last().position.Y, 40, 40);
+                        EmptyTileList.Last().index = EmptyTileList.Count() - 1;
                         Rows[row].Columns[column].TileID = 0;
                     }
 
@@ -122,7 +123,7 @@ namespace Infinity_TD
                         Rows[row].Columns[column].TileID = 0;
                     }
 
-                    if (Rows[row].Columns[column].TileID == 7)
+                    if (Rows[row].Columns[column].TileID == 8)
                     {
                         WaypointList.Add(new Tiles.Waypoint());
                         WaypointList.Last().position.X = column * 40;
@@ -133,7 +134,7 @@ namespace Infinity_TD
                         Rows[row].Columns[column].TileID = 0;
                     }
 
-                    if (Rows[row].Columns[column].TileID == 8)
+                    if (Rows[row].Columns[column].TileID == 7)
                     {
                         WaypointList.Add(new Tiles.Waypoint());
                         WaypointList.Last().position.X = column * 40;

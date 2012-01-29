@@ -14,10 +14,11 @@ namespace Infinity_TD
         Texture2D sidebar, border;
         Texture2D[] runes = new Texture2D[10];
         Texture2D[] recipes = new Texture2D[12];
-        Texture2D altMouseTex;
+        KeyboardState previousKeyboard;
+        public Texture2D altMouseTex;
         SpriteFont interfaceFont;
         string currentDrawString;
-        Combinator.Tower currentTower;
+        public Combinator.Tower currentTower;
         public Rectangle[] runeRectangles = new Rectangle[10];
         public Rectangle[] recipeRectangles = new Rectangle[12];
         public Combinator combinator = new Combinator();
@@ -66,7 +67,6 @@ namespace Infinity_TD
                     if ((Mouse.GetState().LeftButton == ButtonState.Pressed) && (previousState.LeftButton == ButtonState.Released))
                     {
                         combinatorRunes[runeCount] = RuneManager.RuneList[i];
-                        Console.WriteLine(combinatorRunes[runeCount].ToString());
                         combinatorRuneText[runeCount] = runes[i];
                         runeCount++;
 
@@ -74,12 +74,176 @@ namespace Infinity_TD
                         {
                              runeCount = 0;
                              currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                             altMouseTex = recipes[i];
+                             if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[i];
 
                         }
                     }
                 }
             }
+
+            #region KeyboardInput
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.Q)) && (previousKeyboard.IsKeyUp(Keys.Q)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[0];
+                combinatorRuneText[runeCount] = runes[0];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[0];
+
+                }
+
+
+            }
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.W)) && (previousKeyboard.IsKeyUp(Keys.W)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[1];
+                combinatorRuneText[runeCount] = runes[1];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[1];
+
+                }
+
+
+            }
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.E)) && (previousKeyboard.IsKeyUp(Keys.E)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[2];
+                combinatorRuneText[runeCount] = runes[2];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[2];
+
+                }
+
+
+            }
+
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.A)) && (previousKeyboard.IsKeyUp(Keys.A)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[3];
+                combinatorRuneText[runeCount] = runes[3];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[3];
+
+                }
+
+
+            }
+
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.S)) && (previousKeyboard.IsKeyUp(Keys.S)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[4];
+                combinatorRuneText[runeCount] = runes[4];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[4];
+
+                }
+
+
+            }
+
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.D)) && (previousKeyboard.IsKeyUp(Keys.D)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[5];
+                combinatorRuneText[runeCount] = runes[5];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[5];
+
+                }
+
+
+            }
+
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.Z)) && (previousKeyboard.IsKeyUp(Keys.Z)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[6];
+                combinatorRuneText[runeCount] = runes[6];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[6];
+
+                }
+
+
+            }
+
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.X)) && (previousKeyboard.IsKeyUp(Keys.X)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[7];
+                combinatorRuneText[runeCount] = runes[7];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[7];
+
+                }
+
+
+            }
+
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.C)) && (previousKeyboard.IsKeyUp(Keys.C)))
+            {
+                combinatorRunes[runeCount] = RuneManager.RuneList[8];
+                combinatorRuneText[runeCount] = runes[8];
+                runeCount++;
+
+                if (runeCount == 3)
+                {
+                    runeCount = 0;
+                    currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
+                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[8];
+
+                }
+
+
+            }
+
+            #endregion
+
             #endregion
 
             #region UpdateRecipes
@@ -97,6 +261,7 @@ namespace Infinity_TD
 
             #endregion
 
+            previousKeyboard = Keyboard.GetState();
         }
 
         public void DrawInterface(SpriteBatch spriteBatch)
