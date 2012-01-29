@@ -88,8 +88,8 @@ namespace Infinity_TD
 
             Position = _position;
 
-            destinationRect = new Rectangle((int)Position.X - (int)(larguraFrame * escala) / 2,
-                                            (int)Position.Y - (int)(alturaFrame * escala) / 2,
+            destinationRect = new Rectangle((int)Position.X + (int)(larguraFrame * escala) / 2,
+                                            (int)Position.Y + (int)(alturaFrame * escala) / 2,
                                             (int)(larguraFrame * escala),
                                             (int)(alturaFrame * escala));
 
