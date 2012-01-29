@@ -24,7 +24,7 @@ namespace Infinity_TD
         {
             get
             {
-                return !(life < 0);
+                return life > 0;
             }
 
             private set
@@ -74,7 +74,7 @@ namespace Infinity_TD
         {
             Shot shot = (Shot)sender;
 
-            //Aplicar Efeito
+            Effect effec = shot.Effect;
 
 
             shot.Alive = false;
@@ -141,7 +141,7 @@ namespace Infinity_TD
                 if (nexus.area.Contains(BoundRect))
                 {
                     GameManager.vidas--;
-                    this.alive = false;
+                    this.life = 0.0f;
                 }
             }
 
