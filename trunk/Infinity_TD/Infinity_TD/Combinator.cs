@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Infinity_TD
 {
-    class Combinator
+    public class Combinator
     {
-        public enum Combination { INVALID, FIREBALL, GLACIER, TORNADO, THUNDERSTORM, EARTHQUAKE, CORROSIVE,  } //TODO: ADICIONAR OUTRAS TORRES
+        public enum Tower { INVALID, FIREBALL, GLACIER, TORNADO, THUNDERSTORM, EARTHQUAKE, CORROSIVE,  } //TODO: ADICIONAR OUTRAS TORRES
 
         public enum Runes { NONE, FIRE, WATER, AIR, EARTH, LIGHTNING, NATURE, LIGHT, DARKNESS, COSMIC, INFINITY }
 
@@ -16,14 +16,14 @@ namespace Infinity_TD
         //INICIALIZA RECIPES
         public void InitializeRecipes()
         {
-            recipeArray[1] = new Recipe(Runes.FIRE, Runes.FIRE, Runes.AIR, Combination.FIREBALL);
-            recipeArray[2] = new Recipe(Runes.WATER, Runes.WATER, Runes.AIR, Combination.GLACIER);
-            recipeArray[3] = new Recipe(Runes.AIR, Runes.AIR, Runes.AIR, Combination.TORNADO);
+            recipeArray[1] = new Recipe(Runes.FIRE, Runes.FIRE, Runes.AIR, Tower.FIREBALL);
+            recipeArray[2] = new Recipe(Runes.WATER, Runes.WATER, Runes.AIR, Tower.GLACIER);
+            recipeArray[3] = new Recipe(Runes.AIR, Runes.AIR, Runes.AIR, Tower.TORNADO);
             //TODO: FAZER OUTROS RECIPES
         }
 
         //VERIFICA A COMBINAÇÃO DE RUNAS E RETORNA A TORRE EQUIVALENTE A ELAS
-        public Combination parseCombination(Runes rune1, Runes rune2, Runes rune3)
+        public Tower parseCombination(Runes rune1, Runes rune2, Runes rune3)
         {
             for (int i = 1; i <= 12; i++)
             {
@@ -39,17 +39,17 @@ namespace Infinity_TD
                 }
             }
 
-            return Combination.INVALID;
+            return Tower.INVALID;
         }
 
     }
 
-    class Recipe
+  public  class Recipe
     {
         public Combinator.Runes rune1, rune2, rune3;
-        public Combinator.Combination towerType;
+        public Combinator.Tower towerType;
 
-        public Recipe(Combinator.Runes _rune1, Combinator.Runes _rune2, Combinator.Runes _rune3, Combinator.Combination _tower)
+        public Recipe(Combinator.Runes _rune1, Combinator.Runes _rune2, Combinator.Runes _rune3, Combinator.Tower _tower)
         {
             rune1 = _rune1;
             rune2 = _rune2;
