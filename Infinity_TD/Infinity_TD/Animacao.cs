@@ -64,7 +64,7 @@ namespace Infinity_TD
             Estado = true;
         }
 
-        public void Update(GameTime gameTime) 
+        public void Update(GameTime gameTime, Vector2 _position) 
         {
             if (Estado == false)
                 return;
@@ -86,6 +86,8 @@ namespace Infinity_TD
 
             sourceRect = new Rectangle(frameAtual * larguraFrame, 0, larguraFrame, alturaFrame);
 
+            Position = _position;
+
             destinationRect = new Rectangle((int)Position.X - (int)(larguraFrame * escala) / 2,
                                             (int)Position.Y - (int)(alturaFrame * escala) / 2,
                                             (int)(larguraFrame * escala),
@@ -93,9 +95,9 @@ namespace Infinity_TD
 
         }
 
-        public void Draw(SpriteBatch spriteBatch) 
+        public void Draw(SpriteBatch spriteBatch, float rotation) 
         {
-            spriteBatch.Draw(playerTextura, destinationRect, sourceRect, Color.White);
+            spriteBatch.Draw(playerTextura, destinationRect, sourceRect, Color.White, rotation, new Vector2(playerTextura.Width/4, playerTextura.Height/4), SpriteEffects.None, 0f);
         }
     }
 }
