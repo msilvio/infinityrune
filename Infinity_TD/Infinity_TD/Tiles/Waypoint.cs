@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Infinity_TD.Tiles
 {
@@ -11,7 +12,8 @@ namespace Infinity_TD.Tiles
         public Vector2 position;
         public Rectangle area;
         public int index;
-        Random rand = new Random();
+        public Texture2D teste;
+        
 
         public enum Directions { UP, LEFT, RIGHT, DOWN };
 
@@ -19,8 +21,17 @@ namespace Infinity_TD.Tiles
 
         public Directions getDirection()
         {
-            int random = rand.Next(0, DirectionList.Count() - 1);
+            int random = MapArrays.random.Next(0, DirectionList.Count());
+
+            Console.WriteLine(DirectionList.ElementAt(random).ToString());
+            Console.WriteLine(random);
+
             return DirectionList.ElementAt(random);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(teste, area, Color.White);
         }
 
     }

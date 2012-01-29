@@ -35,14 +35,23 @@ namespace Infinity_TD
         protected override void LoadContent()
         {
             enemyTexture = Content.Load<Texture2D>("Graphics/Enemy/_Robo1");
-            testEnemy = new Enemy(new Vector2(0, 560), enemyTexture);
+
+
+
+            testEnemy = new Enemy(new Vector2(0, 564), enemyTexture);
             testEnemy.speed.X = 2f;
             MapArrays.mapListInit();
             tileMap = new TileMap();
             tileMap.initializeMap();
             hud.InitializeInterface(this.Content);
 
-            stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\cidade");
+            foreach (Infinity_TD.Tiles.Waypoint waypoint in tileMap.WaypointList)
+            {
+                waypoint.teste = Content.Load<Texture2D>("Graphics/Stuff/Cursor1");
+            }
+
+
+            stageTexture = Content.Load<Texture2D>(@"Graphics\Scenes\floresta");
             font = Content.Load<SpriteFont>("Fonts/Arial");
             //texture1 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo1"); // retirar apos testes.
             //texture2 = Content.Load<Texture2D>(@"Graphics\Enemy\_Robo2"); // retirar apos testes.
@@ -92,6 +101,13 @@ namespace Infinity_TD
             testEnemy.Draw(OurGame.SpriteBatch);
             hud.DrawInterface(OurGame.SpriteBatch);
             OurGame.SpriteBatch.DrawString(font, tileMap.WaypointList[6].position.ToString() + tileMap.WaypointList[6].DirectionList[0].ToString(), Vector2.Zero, Color.White);
+            
+            //DEBUG
+            foreach (Infinity_TD.Tiles.Waypoint waypoint in tileMap.WaypointList)
+            {
+                waypoint.Draw(OurGame.SpriteBatch);
+            }
+
             base.Draw(gameTime);
         }
 

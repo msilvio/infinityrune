@@ -15,7 +15,7 @@ namespace Infinity_TD
         public Vector2 speed;
         Animacao enemyAnimation;
         Texture2D enemyTexture;
-        float rotation = MathHelper.ToRadians(90f);
+        public float rotation = MathHelper.ToRadians(90f);
         Color color = Color.White;
 
         private bool alive;
@@ -62,9 +62,11 @@ namespace Infinity_TD
 
         public void Update(GameTime gameTime, TileMap tileMap)
         {
+
+            #region UpdateWaypoints
             foreach (Tiles.Waypoint waypoint in tileMap.WaypointList)
             {
-                if (waypoint.area.Intersects(this.BoundRect))
+                if (waypoint.area.Contains(this.BoundRect))
                 {
                     Infinity_TD.Tiles.Waypoint.Directions directions = waypoint.getDirection();
 
@@ -112,6 +114,8 @@ namespace Infinity_TD
                 }
             }
 
+            #endregion
+
             enemyAnimation.Update(gameTime, position);
 
             position += speed;
@@ -122,6 +126,7 @@ namespace Infinity_TD
         public void Draw(SpriteBatch spriteBatch)
         {
             enemyAnimation.Draw(spriteBatch, rotation);
+            //spriteBatch.Draw(enemyTexture, BoundRect, Color.White);
         }
 
     }
