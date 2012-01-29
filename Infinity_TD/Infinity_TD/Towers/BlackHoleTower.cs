@@ -10,7 +10,7 @@ namespace Infinity_TD.Towers
     class BlackHoleTower : Tower
     {
         public BlackHoleTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"blackhole", damage, position, fireRate, new Effect())
+            : base(game, @"blackhole", @"fireball", damage, position, fireRate, new Effect())
         {
         }
 

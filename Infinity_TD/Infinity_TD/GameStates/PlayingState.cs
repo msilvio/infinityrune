@@ -173,7 +173,7 @@ namespace Infinity_TD
         {
             for (int i = 0; i < 9; i++)
             {
-                RuneManager.InsertRune(i, 3);
+                RuneManager.InsertRune(i, 100);
             }
 
             initializeLevel();
@@ -290,7 +290,7 @@ namespace Infinity_TD
                         nearEnemy = enemy;
                     }
                 }
-                tower.FireToEnemy(nearEnemy, tower.Position, Content.Load<Texture2D>(@"Graphics\Stuff\cursor2"));
+                tower.FireToEnemy(nearEnemy, tower.Position,tower.shot_text);
             }
 
             foreach (Shot shot in tower.Shots)
