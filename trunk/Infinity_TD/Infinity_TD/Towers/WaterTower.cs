@@ -11,7 +11,7 @@ namespace Infinity_TD
     class WaterTower : Tower
     {
         public WaterTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"glacier rune1", damage, position, fireRate)
+            : base(game, @"glacier rune1", damage, position, fireRate, new Effect())
         {
 
         }
