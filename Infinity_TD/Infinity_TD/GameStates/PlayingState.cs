@@ -42,6 +42,8 @@ namespace Infinity_TD
 
         public void initializeLevel()
         {
+            OurGame.soundManager.playSong();
+
             switch (Infinity_TD.GameManager.currentLevel)
             {
                 case 1:
@@ -53,7 +55,9 @@ namespace Infinity_TD
                     ReinitializeMap(2);
                     break;
                 case 3:
+                    //Deserto
                     stageTexture = Content.Load<Texture2D>("");
+                    OurGame.soundManager.soundLoad("Desert Song");
                     ReinitializeMap(3);
                     break;
                 case 4:

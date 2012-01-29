@@ -26,13 +26,11 @@ namespace Infinity_TD
 
         public void EffectLoad()
         {
-            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Effect1");
+            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Robot Hit");
             lista.Add(soundEffect);
-            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Effect2");
+            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/BossWalk");
             lista.Add(soundEffect);
-            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Effect3");
-            lista.Add(soundEffect);
-            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Effect4");
+            soundEffect = game.Content.Load<SoundEffect>("Sounds/Effects/Glacier Shoot");
             lista.Add(soundEffect);
         }
     }

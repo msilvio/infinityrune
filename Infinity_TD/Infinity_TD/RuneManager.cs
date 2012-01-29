@@ -34,22 +34,22 @@ namespace Infinity_TD
 
             #region RecipeArrays
             RecipeBag[0] = "Fireball Rune \nFire + Fire + Air";
-            RecipeBag[1] = "Water + Water + Air = Glacier Rune";
-            RecipeBag[2] = "Air + Air + Air = Tornado Rune";
+            RecipeBag[1] = "Glacier Rune \nWater + Water + Air";
+            RecipeBag[2] = "Tornado Rune \nAir + Air + Air";
             RecipeBag[3] = "Thunderstorm Rune \nWater + Air + Thunder";
-            RecipeBag[4] = "Earth + Earth + Fire = Earthquake Rune";
-            RecipeBag[5] = "Nature + Nature + Earth = Corrisive Rune";
-            RecipeBag[6] = "Fire + Earth + Fire = Magmatic Rune";
-            RecipeBag[7] = "Light + Light + Thunder = Glyph of Blinding Light";
-            RecipeBag[8] = "Darkness + Fire + Darkness = Glyph of Dark Flames";
-            RecipeBag[9] = "Cosmic + Light + Fire = Major Glyph of the Sun";
-            RecipeBag[10] = "Cosmic + Darkness + Darkness = Major Glyph of the Black Hole";
-            RecipeBag[11] = "Infinity + Infinity + Infinity = Essence of Infinity";
+            RecipeBag[4] = "Earthquake Rune \nEarth + Earth + Fire";
+            RecipeBag[5] = "Corrosive Rune \nNature + Nature + Earth";
+            RecipeBag[6] = "Magmatic Rune \nFire + Earth + Fire";
+            RecipeBag[7] = "Glyph of Blinding Light \nLight + Light + Thunder";
+            RecipeBag[8] = "Glyph of Dark Flames \nDark + Fire + Dark";
+            RecipeBag[9] = "Glyph of the Sun \nCosmic + Light + Fire";
+            RecipeBag[10] = "Glyph of Black Hole \nCosmic + Dark + Dark";
+            RecipeBag[11] = "Essence of Infinity \nInfinity x 3";
 
             CheckRecipe[0] = true;
             CheckRecipe[1] = false;
             CheckRecipe[2] = false;
-            CheckRecipe[3] = true;
+            CheckRecipe[3] = false;
             CheckRecipe[4] = false;
             CheckRecipe[5] = false;
             CheckRecipe[6] = false;

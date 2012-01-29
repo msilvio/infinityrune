@@ -86,7 +86,8 @@ namespace Infinity_TD
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
                 Shots.Add(shot);
-                towerSpawn -= FireRate;
+                towerSpawn = 0.0f;
+                
             }
             // return shot;
         }
