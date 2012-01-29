@@ -128,6 +128,7 @@
     <Compile Include="Tiles\RoadTile.cs" />
     <Compile Include="Tiles\SpawnPoint.cs" />
     <Compile Include="Tiles\Waypoint.cs" />
+    <Compile Include="Towers\BlackHoleTower.cs" />
     <Compile Include="Towers\FireTower.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameStates\BaseGameState.cs" />
@@ -138,17 +139,21 @@
     <Compile Include="GameStates\StartMenuState.cs" />
     <Compile Include="GameStates\TitleIntroState.cs" />
     <Compile Include="Interface.cs" />
+    <Compile Include="Towers\InfinityTower.cs" />
     <Compile Include="Towers\LightningTower.cs" />
     <Compile Include="MapCell.cs" />
+    <Compile Include="Towers\LightTower.cs" />
+    <Compile Include="Towers\MagmaTower.cs" />
     <Compile Include="Towers\PlasmaTower.cs" />
     <Compile Include="Towers\PoisonTower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Towers\ShadowTower.cs" />
-    <Compile Include="Towers\StoneTower.cs" />
+    <Compile Include="Towers\EarthTower.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileMap.cs" />
     <Compile Include="Tooltip.cs" />
+    <Compile Include="Towers\TornadoTower.cs" />
     <Compile Include="Towers\Tower.cs" />
     <Compile Include="Towers\WaterTower.cs" />
   </ItemGroup>

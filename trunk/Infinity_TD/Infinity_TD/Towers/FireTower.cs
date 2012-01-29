@@ -11,7 +11,7 @@ namespace Infinity_TD
     class FireTower : Tower
     {
         public FireTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"torre-raio", damage, position, fireRate)
+            : base(game, @"fireball rune", damage, position, fireRate)
         { 
             
         }

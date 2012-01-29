@@ -18,7 +18,7 @@ namespace Infinity_TD
         public Texture2D altMouseTex;
         SpriteFont interfaceFont;
         string currentDrawString;
-        public Combinator.Tower currentTower;
+        public Combinator.TowerType currentTower;
         public Rectangle[] runeRectangles = new Rectangle[10];
         public Rectangle[] recipeRectangles = new Rectangle[12];
         public Combinator combinator = new Combinator();
@@ -57,18 +57,18 @@ namespace Infinity_TD
                 recipeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 420 + (int)((i / 3) * 70), 30, 30);
             }
 
-            recipes[0] = content.Load<Texture2D>("Graphics/Tower/torre-fogo");
+            recipes[0] = content.Load<Texture2D>("Graphics/Tower/fireball rune");
             recipes[1] = content.Load<Texture2D>("Graphics/Tower/glacier rune1");
             recipes[2] = content.Load<Texture2D>("Graphics/Tower/tornado rune");
             recipes[3] = content.Load<Texture2D>("Graphics/Tower/thunderstorm rune");
             recipes[4] = content.Load<Texture2D>("Graphics/Tower/earthquake rune");
             recipes[5] = content.Load<Texture2D>("Graphics/Tower/corrosive rune");
-            recipes[6] = content.Load<Texture2D>("Graphics/Tower/magmatic glyph1");
-            recipes[7] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
-            recipes[8] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
-            recipes[9] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
-            recipes[10] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
-            recipes[11] = content.Load<Texture2D>("Graphics/Tower/torre-raio");
+            recipes[6] = content.Load<Texture2D>("Graphics/Tower/magmatic glyph");
+            recipes[7] = content.Load<Texture2D>("Graphics/Tower/blinding_light");
+            recipes[8] = content.Load<Texture2D>("Graphics/Tower/dark_flames");
+            recipes[9] = content.Load<Texture2D>("Graphics/Tower/sunglyph");
+            recipes[10] = content.Load<Texture2D>("Graphics/Tower/blackhole");
+            recipes[11] = content.Load<Texture2D>("Graphics/Tower/infinity");
 
         }
 
@@ -95,9 +95,9 @@ namespace Infinity_TD
                         {
                              runeCount = 0;
                              currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                             if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[i];
+                             if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[i];
 
-                             if (currentTower == Combinator.Tower.INVALID)
+                             if (currentTower == Combinator.TowerType.INVALID)
                              {
                                  RuneManager.AddExistingRune(combinatorRunes[0]);
                                  RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -126,9 +126,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[0];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[0];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -153,9 +153,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[1];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[1];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -180,9 +180,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[2];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[2];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -208,9 +208,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[3];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[3];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -237,9 +237,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[4];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[4];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -265,9 +265,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[5];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[5];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -293,9 +293,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[6];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[6];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -321,9 +321,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[7];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[7];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);
@@ -349,9 +349,9 @@ namespace Infinity_TD
                 {
                     runeCount = 0;
                     currentTower = (combinator.parseCombination(combinatorRunes[0], combinatorRunes[1], combinatorRunes[2]));
-                    if (currentTower != Combinator.Tower.INVALID) altMouseTex = recipes[8];
+                    if (currentTower != Combinator.TowerType.INVALID) altMouseTex = recipes[8];
 
-                    if (currentTower == Combinator.Tower.INVALID)
+                    if (currentTower == Combinator.TowerType.INVALID)
                     {
                         RuneManager.AddExistingRune(combinatorRunes[0]);
                         RuneManager.AddExistingRune(combinatorRunes[1]);

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Infinity_TD_Library;
+using Infinity_TD.Towers;
 
 namespace Infinity_TD
 {
@@ -107,14 +108,63 @@ namespace Infinity_TD
 
         }
 
-        public void generateTower(Tiles.EmptyTile emptyTile)
+        public void generateTower(Tiles.EmptyTile emptyTile, Combinator.TowerType tower)
         {
-            towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 0.14f));
+            switch(tower)
+            {
+                case Combinator.TowerType.FIREBALL:
+                towers.Add(Tower.getTower<FireTower>(Game, 40.0f, tileMap.EmptyTileList[emptyTile.index].position, 0.75f));
+                break;
+
+                case Combinator.TowerType.THUNDERSTORM:
+                towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 0.14f));
+                break;
+
+                case Combinator.TowerType.EARTHQUAKE:
+                towers.Add(Tower.getTower<EarthTower>(Game, 0.0f, tileMap.EmptyTileList[emptyTile.index].position, 999999.0f));
+                break;
+
+                case Combinator.TowerType.CORROSIVE:
+                towers.Add(Tower.getTower<PoisonTower>(Game, 2.0f, tileMap.EmptyTileList[emptyTile.index].position, 1.0f));
+                break;
+
+                case Combinator.TowerType.TORNADO:
+                towers.Add(Tower.getTower<TornadoTower>(Game, 0.0f, tileMap.EmptyTileList[emptyTile.index].position, 999999.0f));
+                break;
+
+                case Combinator.TowerType.GLACIER:
+                towers.Add(Tower.getTower<WaterTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+
+                case Combinator.TowerType.DARKFLAMES:
+                towers.Add(Tower.getTower<ShadowTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+
+                case Combinator.TowerType.SOLAR:
+                towers.Add(Tower.getTower<PlasmaTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+
+                case Combinator.TowerType.BLINDING:
+                towers.Add(Tower.getTower<LightTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+
+                case Combinator.TowerType.BLACKHOLE:
+                towers.Add(Tower.getTower<BlackHoleTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+
+                case Combinator.TowerType.INFINITY:
+                towers.Add(Tower.getTower<InfinityTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+
+                case Combinator.TowerType.MAGMATIC:
+                towers.Add(Tower.getTower<MagmaTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 2.0f));
+                break;
+            }
         }
 
         protected override void LoadContent()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 9; i++)
             {
                 RuneManager.InsertRune(i, 3);
             }
@@ -164,11 +214,11 @@ namespace Infinity_TD
             {
                 if (emptyTile.area.Contains(new Point(Mouse.GetState().X, Mouse.GetState().Y)))
                 {
-                    if ((hud.currentTower != Combinator.Tower.INVALID) && (Mouse.GetState().LeftButton == ButtonState.Pressed) && (emptyTile.full == false))
+                    if ((hud.currentTower != Combinator.TowerType.INVALID) && (Mouse.GetState().LeftButton == ButtonState.Pressed) && (emptyTile.full == false))
                     {
-                        generateTower(emptyTile);
+                        generateTower(emptyTile, hud.currentTower);
                         emptyTile.full = true;
-                        hud.currentTower = Combinator.Tower.INVALID;
+                        hud.currentTower = Combinator.TowerType.INVALID;
                         hud.altMouseTex = null;
                     }
                 }

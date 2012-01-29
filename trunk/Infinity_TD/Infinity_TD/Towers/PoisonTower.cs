@@ -10,6 +10,6 @@ namespace Infinity_TD
     class PoisonTower : Tower
     {
         public PoisonTower(Game game, float damage, Vector2 position, float fireRate)
-            : base(game, @"torre-raio", damage, position, fireRate) { }
+            : base(game, @"corrosive rune", damage, position, fireRate) { }
     }
 }
