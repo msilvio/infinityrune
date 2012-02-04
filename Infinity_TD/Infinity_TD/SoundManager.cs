@@ -37,6 +37,7 @@ namespace Infinity_TD
         }
         public void playSound(int i)
         {
+            SoundEffect.MasterVolume = 0.1f;
             effectControl.lista[i].Play();
         }
 
