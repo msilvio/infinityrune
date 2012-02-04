@@ -43,6 +43,7 @@ namespace Infinity_TD
         public IOptionsMenuState OptionsMenuState;
         public IPlayingState PlayingState; //Main State
         public IPausedState PausedState;
+        public IGameOverState GameOverState; // GameOverTitle
 
         public Game1()
         {
@@ -66,6 +67,7 @@ namespace Infinity_TD
             PlayingState = new PlayingState(this);
             PausedState = new PausedState(this);
             soundManager = new SoundManager(this);
+            GameOverState = new GameOverState(this);
             gameManager.ChangeState(TitleIntroState.Value);
         }
 

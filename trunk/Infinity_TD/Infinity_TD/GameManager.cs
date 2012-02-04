@@ -7,7 +7,7 @@ namespace Infinity_TD
 {
     static class GameManager
     {
-        public static int vidas = 5;
+        public static int vidas = 10;
 
         public static int currentWave, totalWaves, currentLevel;
 
@@ -26,8 +26,8 @@ namespace Infinity_TD
             Random random = new Random(level);
 
             numEnemies = random.Next(1, 10);
-
             numEnemyTypes = 0;
+            // numEnemyTypes = random.Next(0, 3); // tipo de inimigo // numEnemyTypes = 0;
         }
     }
 
