@@ -254,10 +254,14 @@ namespace Infinity_TD
                 elapsedTimeGenerator -= timeWaveGenerate;
             }
 
-            previousState = Mouse.GetState();
-            if (Infinity_TD.GameManager.vidas == 0) {
-                OurGame.Exit();
+            if (Infinity_TD.GameManager.vidas <= 0)
+            {
+                GameManager.PushState(OurGame.GameOverState.Value);
+                //OurGame.Exit(); 
             }
+
+            previousState = Mouse.GetState();
+
             base.Update(gameTime);
         }
 

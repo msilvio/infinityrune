@@ -12,5 +12,6 @@ namespace Infinity_TD
         public interface IOptionsMenuState : IGameState { }
         public interface IPlayingState : IGameState { }
         public interface IPausedState : IGameState { }
+        public interface IGameOverState : IGameState { } // incluida depois de feito upload 
 
 }
