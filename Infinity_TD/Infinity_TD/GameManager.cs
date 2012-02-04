@@ -13,6 +13,7 @@ namespace Infinity_TD
 
         public static bool hard = false;
 
+        public static Random RNG = new Random();
     }
 
     class EnemyWave

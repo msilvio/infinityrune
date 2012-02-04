@@ -10,7 +10,7 @@ namespace Infinity_TD
 {
     class Enemy : ICollidable
     {
-        float life;
+        public float life, maxLife;
         public Vector2 Position;
         public Vector2 speed;
         Animacao enemyAnimation;
@@ -18,6 +18,7 @@ namespace Infinity_TD
         Color color = Color.White;
         float stopTime;
         private float elapsedTime;
+        Texture2D hpBar;
 
         private static Random random = new Random();
 
@@ -63,11 +64,13 @@ namespace Infinity_TD
         }
 
 
-        public Enemy(Vector2 position, Texture2D texture)
+        public Enemy(Vector2 position, Texture2D texture, float _life, float _enemySpeed, Texture2D hpBarTexture)
         {
             this.Position = position;
-            speed.X = 1.0f + Enemy.random.Next(0, 3);
-            life = 100.0f;
+            speed.X = (1.0f + _enemySpeed);
+            life = _life;
+            maxLife = life;
+            hpBar = hpBarTexture;
             Alive = true;
             enemyAnimation = new Animacao(texture, position, 32, 32, 2, 90, 1f, true);
             stopTime = 0.0f;
@@ -177,6 +180,7 @@ namespace Infinity_TD
         public void Draw(SpriteBatch spriteBatch)
         {
             enemyAnimation.Draw(spriteBatch, rotation);
+            spriteBatch.Draw(hpBar, new Rectangle((int)Position.X - 10, (int)Position.Y - 5, (int)(32 * (life / maxLife)),8), Color.White);
         }
 
     }

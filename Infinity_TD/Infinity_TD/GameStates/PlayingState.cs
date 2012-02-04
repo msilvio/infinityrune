@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Threading;
 using Infinity_TD_Library;
 using Infinity_TD.Towers;
 
@@ -51,13 +52,13 @@ namespace Infinity_TD
             switch (Infinity_TD.GameManager.currentLevel)
             {
                 case 0:
-                    timeWaveGenerate = 5.0f;
+                    timeWaveGenerate = 10.0f;
                     OurGame.soundManager.soundLoad("Final Fase");
                     break;
                 case 1:
                     stageTexture = Content.Load<Texture2D>("Graphics/Scenes/floresta");
                     OurGame.soundManager.soundLoad("Musica Boss");
-                    timeWaveGenerate = 5.0f;
+                    timeWaveGenerate = 10.0f;
                     ReinitializeMap(1);
                     break;
                 case 2:
@@ -248,7 +249,7 @@ namespace Infinity_TD
             elapsedTimeGenerator += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (elapsedTimeGenerator > timeWaveGenerate)
-            {
+            {    
                 enemyManager.generateEnemiesWave(tileMap.SpawnPointList[0].position, Content, new EnemyWave(Infinity_TD.GameManager.currentLevel));
                 elapsedTimeGenerator -= timeWaveGenerate;
             }
@@ -320,7 +321,8 @@ namespace Infinity_TD
                 tower.Draw(OurGame.SpriteBatch);
             }
 
-            OurGame.SpriteBatch.DrawString(font, "Vidas: " + Infinity_TD.GameManager.vidas.ToString(), Vector2.Zero, Color.White);
+            int interval = (int)(timeWaveGenerate - elapsedTimeGenerator);
+            OurGame.SpriteBatch.DrawString(font, "Vidas: " + Infinity_TD.GameManager.vidas.ToString() +"\nProxima Wave: " + interval.ToString(), Vector2.Zero, Color.White);
 
             base.Draw(gameTime);
         }
