@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -55,16 +56,23 @@ namespace Infinity_TD
             return collideEnemies;
         }
 
+        Texture2D texture;
+        Texture2D hpBarTexture;
+        float life, enemySpeed;
         public void generateEnemiesWave(Vector2 position, ContentManager content, EnemyWave enemyWave)
         {
-            Texture2D texture;
+
             string basePath = @"Graphics\Enemy\_Robo";
 
             texture = content.Load<Texture2D>(basePath + (enemyWave.numEnemyTypes + 1));
+            hpBarTexture = content.Load<Texture2D>("Graphics/Stuff/hp_bar");
+
+            life = GameManager.RNG.Next(1, 3) * 50.0f;
+            enemySpeed = GameManager.RNG.Next(0, 2);
 
             for (int i = 0; i < enemyWave.numEnemies; ++i)
             {
-                Enemies.Add(new Enemy(position, texture));
+                Enemies.Add(new Enemy(new Vector2(position.X - 32*i, position.Y), texture, life, enemySpeed,hpBarTexture));
             }
            
         }
