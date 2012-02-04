@@ -32,6 +32,7 @@ namespace Infinity_TD
         {
             combinator.InitializeRecipes();
             sidebar = content.Load<Texture2D>("Graphics/Stuff/hud_base");
+            border = content.Load<Texture2D>("Graphics/Stuff/border");
 
             interfaceFont = content.Load<SpriteFont>("Fonts/hud_font");
             //border = content.Load<Texture2D>("");
@@ -421,7 +422,7 @@ namespace Infinity_TD
 
             }
 
-                
+            spriteBatch.Draw(border, Vector2.Zero, Color.White);
 
             if (altMouseTex != null)
             {

@@ -97,7 +97,7 @@ namespace Infinity_TD
 
         public void Draw(SpriteBatch spriteBatch, float rotation) 
         {
-            spriteBatch.Draw(playerTextura, destinationRect, sourceRect, Color.White, rotation, new Vector2(playerTextura.Width/4, playerTextura.Height/4), SpriteEffects.None, 0f);
+            spriteBatch.Draw(playerTextura, destinationRect, sourceRect, Color.White, rotation, new Vector2(playerTextura.Width/4, playerTextura.Height/2), SpriteEffects.None, 0f);
         }
     }
 }

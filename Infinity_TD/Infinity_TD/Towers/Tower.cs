@@ -13,6 +13,7 @@ namespace Infinity_TD
         public Vector2 Position;
         Animacao animation;
         float towerSpawn = 0.0f;
+        float rotation = 0.0f;
         SoundManager soundaManager;
         public Texture2D shot_text;
         public List<Shot> Shots
@@ -135,7 +136,8 @@ namespace Infinity_TD
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            this.animation.Draw(spriteBatch, MathHelper.ToRadians(0.0f));
+            rotation++;
+            this.animation.Draw(spriteBatch, MathHelper.ToRadians(rotation));
 
             foreach (Shot shot in Shots)
             {
