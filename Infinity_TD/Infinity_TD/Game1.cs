@@ -52,7 +52,7 @@ namespace Infinity_TD
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
             Window.Title = "Infinity TD";
-
+            graphics.IsFullScreen = true;
             input = new InputHandler(this);
             Components.Add(input);
 

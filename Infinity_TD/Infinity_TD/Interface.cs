@@ -24,6 +24,7 @@ namespace Infinity_TD
         public Combinator combinator = new Combinator();
         public Combinator.Runes[] combinatorRunes = new Combinator.Runes[3];
         public Texture2D[] combinatorRuneText = new Texture2D[3];
+        public string[] runeNames = new string[10];
         int runeCount = 0;
         
         float positionX = 800;
@@ -49,8 +50,16 @@ namespace Infinity_TD
             runes[7] = content.Load<Texture2D>("Graphics/Runes/dark-runa");
             runes[8] = content.Load<Texture2D>("Graphics/Runes/cosmos-runa");
             runes[9] = content.Load<Texture2D>("Graphics/Runes/fogo-runa");
-            
-
+            runeNames[0] = "Fire Rune";
+            runeNames[1] = "Water Rune";
+            runeNames[2] = "Air Rune";
+            runeNames[3] = "Earth Rune";
+            runeNames[4] = "Thunder Rune";
+            runeNames[5] = "Nature Rune";
+            runeNames[6] = "Light Rune";
+            runeNames[7] = "Dark Rune";
+            runeNames[8] = "Cosmos Rune";
+            runeNames[9] = "Infinity Rune";
             for (int i = 0; i < 9; i++)
             {
                 runeRectangles[i] = new Rectangle((int)positionX + 35 + (int)((i % 3) * 60), 50 + (int)((i / 3) * 70), 30, 30);
@@ -78,11 +87,13 @@ namespace Infinity_TD
 
         public void UpdateInterface(GameTime gameTime, Rectangle mouseRec, MouseState previousState)
         {
+            currentDrawString = null;
             #region UpdateMainRunes
             for (int i = 0; i < 10; i++)
             {
                 if (mouseRec.Intersects(runeRectangles[i]))
                 {
+                    currentDrawString = runeNames[i];
                     if ((Mouse.GetState().LeftButton == ButtonState.Pressed) && (previousState.LeftButton == ButtonState.Released))
                     {
 
@@ -380,8 +391,6 @@ namespace Infinity_TD
                     currentDrawString = RuneManager.RecipeBag[i];
                     break;
                 }
-
-                currentDrawString = null;
             }
 
             #endregion
@@ -417,8 +426,10 @@ namespace Infinity_TD
 
             if (currentDrawString != null)
             {
-                spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(822, 687), Color.Black);
-                spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(820, 685), Color.Yellow);
+                Vector2 stringSize = interfaceFont.MeasureString(currentDrawString);
+                Vector2 stringPosition = new Vector2(910 - (stringSize.X/2), 685);
+                spriteBatch.DrawString(interfaceFont, currentDrawString, new Vector2(stringPosition.X + 2, stringPosition.Y + 2), Color.Black);
+                spriteBatch.DrawString(interfaceFont, currentDrawString, stringPosition, Color.Yellow);
 
             }
 
