@@ -28,6 +28,7 @@ namespace Infinity_TD
 
         float timeWaveGenerate;
         float elapsedTimeGenerator;
+        int currentEnemyWave;
 
         public PlayingState(Game game)
             : base(game)
@@ -125,7 +126,7 @@ namespace Infinity_TD
                 break;
 
                 case Combinator.TowerType.THUNDERSTORM:
-                towers.Add(Tower.getTower<LightningTower>(Game, 10.0f, tileMap.EmptyTileList[emptyTile.index].position, 0.14f));
+                towers.Add(Tower.getTower<LightningTower>(Game, 70.0f, tileMap.EmptyTileList[emptyTile.index].position, 1.4f));
                 break;
 
                 case Combinator.TowerType.EARTHQUAKE:
@@ -172,9 +173,9 @@ namespace Infinity_TD
 
         protected override void LoadContent()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 6; i++)
             {
-                RuneManager.InsertRune(i, 100);
+                RuneManager.InsertRune(i, 9);
             }
 
             initializeLevel();
@@ -243,14 +244,20 @@ namespace Infinity_TD
             {
                 tower.Update(gameTime);
 
+                if (tower.BoundRect.Contains(new Point(Mouse.GetState().X, Mouse.GetState().Y)) && (Mouse.GetState().RightButton == ButtonState.Pressed) && (previousState.RightButton == ButtonState.Released))
+                {
+                    tower.UpgradeTower();
+                }
+
                 HandleCollision(tower, gameTime);
             }
 
             elapsedTimeGenerator += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (elapsedTimeGenerator > timeWaveGenerate)
-            {    
-                enemyManager.generateEnemiesWave(tileMap.SpawnPointList[0].position, Content, new EnemyWave(Infinity_TD.GameManager.currentLevel));
+            {
+                currentEnemyWave++;
+                enemyManager.generateEnemiesWave(tileMap.SpawnPointList[0].position, Content, new EnemyWave(Infinity_TD.GameManager.currentLevel), currentEnemyWave);
                 elapsedTimeGenerator -= timeWaveGenerate;
             }
 

@@ -13,7 +13,7 @@ namespace Infinity_TD
 
         public static bool hard = false;
 
-        public static Random RNG = new Random();
+        public static Random RNG = new Random((int)System.DateTime.Now.Millisecond);
     }
 
     class EnemyWave

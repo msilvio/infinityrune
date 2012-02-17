@@ -17,6 +17,14 @@ namespace Infinity_TD.Towers
             base.Initialize(game, @"tornado rune", @"thunderstorm", damage, position, fireRate, new BlackHoleEffect());
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            animation.Update(gameTime, Position);
+
+            towerSpawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
+        }
+
         public override void FireToEnemy(Enemy enemy, Vector2 positionSource, Texture2D texture)
         {
             FireToEnemy(enemy, positionSource, texture, 0);

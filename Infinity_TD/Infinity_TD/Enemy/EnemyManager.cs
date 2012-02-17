@@ -59,7 +59,7 @@ namespace Infinity_TD
         Texture2D texture;
         Texture2D hpBarTexture;
         float life, enemySpeed;
-        public void generateEnemiesWave(Vector2 position, ContentManager content, EnemyWave enemyWave)
+        public void generateEnemiesWave(Vector2 position, ContentManager content, EnemyWave enemyWave, int currentWave)
         {
 
             string basePath = @"Graphics\Enemy\_Robo";
@@ -68,9 +68,12 @@ namespace Infinity_TD
             hpBarTexture = content.Load<Texture2D>("Graphics/Stuff/hp_bar");
 
             life = GameManager.RNG.Next(1, 3) * 50.0f;
-            enemySpeed = GameManager.RNG.Next(0, 2);
+            enemySpeed = (life / 50.0f) - 1.0f;
+            life += currentWave * 5.0f;
+            
+            
 
-            for (int i = 0; i < enemyWave.numEnemies; ++i)
+            for (int i = 0; i < enemyWave.numEnemies +(int)currentWave/2; ++i)
             {
                 Enemies.Add(new Enemy(new Vector2(position.X - 32*i, position.Y), texture, life, enemySpeed,hpBarTexture));
             }
