@@ -52,7 +52,7 @@ namespace Infinity_TD
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
             Window.Title = "Infinity TD";
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             input = new InputHandler(this);
             Components.Add(input);
 
@@ -96,45 +96,12 @@ namespace Infinity_TD
             mouseRec.X = Mouse.GetState().X;
             mouseRec.Y = Mouse.GetState().Y;
 
-            //if (Keyboard.GetState().IsKeyDown(Keys.Escape)) this.Exit();
-
-
-            //switch (currentScreen)
-            //{
-            //    case Screens.GAME:
-            //        interf.UpdateInterface(gameTime);
-            //        break;
-            //    case Screens.MENU:
-            //        menu.updateMenu();
-            //        break;
-            //    case Screens.PAUSE:
-            //        break;
-            //}
-
-            //previousMouseState = Mouse.GetState();
-            //previousState = Keyboard.GetState();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            //spriteBatch.Begin();
-
-            //switch (currentScreen)
-            //{
-            //    case Screens.GAME:
-            //        //interf.DrawInterface(spriteBatch);
-            //        break;
-            //    case Screens.MENU:
-            //        //Menu.drawMenu(spriteBatch, --SPRITEFONT HERE)
-            //        break;
-            //    case Screens.PAUSE:
-            //        break;
-            //}
-
-            //spriteBatch.End();
 
             SpriteBatch.Begin();
             base.Draw(gameTime);

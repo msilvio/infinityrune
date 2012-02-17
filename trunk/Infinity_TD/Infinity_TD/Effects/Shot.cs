@@ -55,6 +55,8 @@ namespace Infinity_TD
             direction.Normalize();
 
             Position += direction * speed;
+            if (new Rectangle((int)Position.X, (int)Position.Y, 16, 16).Intersects(new Rectangle((int)targetEnemy.Position.X, (int)targetEnemy.Position.Y, 28, 28)))
+                this.Alive = false;
             animation.Update(gameTime,Position);
         }
 

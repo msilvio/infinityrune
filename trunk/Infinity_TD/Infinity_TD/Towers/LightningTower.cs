@@ -25,5 +25,20 @@ namespace Infinity_TD
         {
             FireToEnemy(enemy, positionSource, texture, 3);
         }
+
+        public override void UpgradeTower()
+        {
+            this.upgradeCostRune = 4;
+            if ((RuneManager.RuneBag[upgradeCostRune] > 0) && (upgradeCount <= 5))
+            {
+                this.FireRate = FireRate * 0.85f;
+                this.Damage += 100.0f;
+                this.rotationSpeed += 0.25f;
+                RuneManager.RemoveRune(this.upgradeCostRune, 1);
+                upgradeCount++;
+                this.effect.Damage = this.Damage;
+                base.UpgradeTower();
+            }
+        }
     }
 }

@@ -11,19 +11,21 @@ namespace Infinity_TD
     {
         private int range = 200;
         public Vector2 Position;
-        Animacao animation;
-        float towerSpawn = 0.0f;
+        public Animacao animation;
+        public float towerSpawn = 0.0f;
+        public int upgradeCostRune, upgradeCount;
         float rotation = 0.0f;
-        SoundManager soundaManager;
+        public float rotationSpeed = 1.0f;
+        SoundManager soundManager;
         public Texture2D shot_text;
         public List<Shot> Shots
         {
             get;
             private set;
         }
-        private Effect effect;
+        public Effect effect;
 
-        private float Damage
+        public float Damage
         {
             get;
             set;
@@ -82,9 +84,10 @@ namespace Infinity_TD
             Damage = damage;
             this.FireRate = fireRate;
             this.Position = position;
-            soundaManager = ((Game1)game).soundManager;
+            soundManager = ((Game1)game).soundManager;
             Texture2D texture = game.Content.Load<Texture2D>(@"Graphics\Tower\" + textureName);
             shot_text = game.Content.Load<Texture2D>(@"Graphics\Stuff\Shots\" + shotTexture);
+            effect.Damage = this.Damage;
             this.effect = effect;
             this.animation = new Animacao(texture, this.Position, 32, 32, 2, 90, 1.0f, true);
             Shots = new List<Shot>();
@@ -105,7 +108,7 @@ namespace Infinity_TD
             {
                 Shot shot = new Shot(texture, positionSource, enemy, 5.0f);
                 shot.Effect = effect;
-                soundaManager.playSound(i);
+                soundManager.playSound(i);
                 Shots.Add(shot);
                 towerSpawn = 0.0f;
 
@@ -134,9 +137,14 @@ namespace Infinity_TD
             }
         }
 
+        public virtual void UpgradeTower()
+        {
+
+        }
+
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            rotation++;
+            rotation += rotationSpeed;
             this.animation.Draw(spriteBatch, MathHelper.ToRadians(rotation));
 
             foreach (Shot shot in Shots)

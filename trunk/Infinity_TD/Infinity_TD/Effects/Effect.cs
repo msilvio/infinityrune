@@ -13,10 +13,10 @@ namespace Infinity_TD
         public float Radious { get; set; }
 
 
-        public virtual float ReduceAmountVelocity { get { return 0; } }
-        public virtual float ReduceAmountLife { get { return 0; } }
-        public virtual float Damage { get { return 0; } }
-        public virtual float stopTime { get { return 0; } }
+        public virtual float ReduceAmountVelocity { get; set; }
+        public virtual float ReduceAmountLife { get; set; }
+        public virtual float Damage { get; set; }
+        public virtual float stopTime { get; set; }
 
         protected static Random random = new Random();
     }

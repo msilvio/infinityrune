@@ -27,7 +27,7 @@ namespace Infinity_TD
         {
             get
             {
-                return life > 0;
+                return alive;
             }
 
             private set
@@ -170,7 +170,13 @@ namespace Infinity_TD
                 }
             }
 
-            if (life <= 0) this.alive = false;
+            if (life <= 0)
+            {
+                int rune = GameManager.RNG.Next(1, 6);
+                int chance = GameManager.RNG.Next(1, 100);
+                if (chance >= 10) { RuneManager.InsertRune(rune, 1); }
+                this.alive = false;
+            }
 
             enemyAnimation.Update(gameTime, Position);
 
